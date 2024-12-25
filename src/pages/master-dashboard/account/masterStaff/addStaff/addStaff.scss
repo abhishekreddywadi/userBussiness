@@ -1,0 +1,274 @@
+.create-new-staff {
+  min-height: calc(100vh - 135px);
+  .container {
+    min-height: calc(100vh - 135px);
+    .registration-form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      color: #000;
+
+      label {
+        color: #000 !important;
+      }
+
+      h5 {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #d9534f;
+      }
+
+      .profile-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+
+        .profile-photo {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100px;
+          height: 100px;
+          background-color: #e9ecef;
+          margin-right: 20px;
+        }
+
+        .profile-details {
+          h6 {
+            font-size: 16px;
+            font-weight: bold;
+          }
+
+          p {
+            margin: 0;
+            font-size: 14px;
+          }
+        }
+      }
+
+      .contact-info {
+        margin-bottom: 20px;
+
+        h6 {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+
+        p {
+          margin-bottom: 10px;
+          font-size: 14px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          span {
+            svg {
+              width: 18px;
+              height: 18px;
+            }
+          }
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      .attachment-section,
+      .upload-section {
+        margin-block: 20px;
+
+        h6 {
+          font-size: 16px;
+          font-weight: normal;
+          margin-bottom: 10px;
+        }
+
+        .attachments,
+        .upload-box {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .attachment {
+          width: 23%;
+          height: 150px;
+          background-color: #fae0e1;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #6c757d;
+          text-align: center;
+          font-size: 14px;
+        }
+        .upload-box,
+        .attachment {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 150px;
+          background-color: #fae0e1;
+          border: 1px dashed #ee6d81;
+          border-radius: 5px;
+          color: #6c757d;
+          text-align: center;
+          font-size: 14px;
+          cursor: pointer;
+
+          .file-input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+          }
+
+          label {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+          }
+        }
+      }
+
+      .attachment-section {
+        margin-top: 20px;
+
+        .attachments {
+          flex-wrap: wrap;
+          gap: 15px;
+        }
+      }
+
+      .submit-btn {
+        margin-top: 20px;
+        width: fit-content;
+      }
+
+      .input-box {
+        gap: 15px;
+        input {
+          width: calc(100% - 57px);
+        }
+        button {
+          background: #5b92ff;
+          color: #fff;
+          outline: none;
+          border: 0;
+          min-height: 38px;
+        }
+      }
+    }
+
+    .signature-list {
+      div {
+        img {
+          cursor: pointer;
+        }
+      }
+    }
+
+    #button {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      cursor: pointer;
+      background: #fff
+        url("https://scottyzen.sirv.com/Images/v/finger-print.png") no-repeat
+        center;
+      background-size: contain;
+      display: block;
+      margin: auto;
+      position: relative;
+      box-shadow: 0 1px 10px 0 rgba(1, 1, 1, 0.2),
+        0 1.5px 4px 0 rgba(1, 1, 1, 0.2);
+    }
+
+    .canvas {
+      display: flex;
+      height: 30vh;
+      background: #ededed;
+      .face-id-wrapper {
+        width: 80px;
+        height: 80px;
+        margin: auto;
+        position: relative;
+        svg {
+          position: absolute;
+          fill: #aaa;
+          stroke: #aaa;
+        }
+        &.active {
+          .face-id-default {
+            opacity: 0;
+            transform: scale(1.2);
+            transition: opacity 1.5s, transform 1s;
+            fill: lightblue;
+            stroke: lightblue;
+          }
+          .circle {
+            opacity: 1;
+            transition: opacity 0.7s, transform 2.2s;
+            &.green {
+              transform: rotateX(360deg);
+            }
+            &.blue {
+              transform: rotateY(360deg);
+            }
+            &.purple {
+              transform: rotateY(360deg) rotateX(360deg);
+            }
+          }
+        }
+        .circle {
+          border-radius: 50%;
+          border: 3px solid #000;
+          width: 80px;
+          height: 80px;
+          background: transparent;
+          box-sizing: border-box;
+          position: absolute;
+          opacity: 0;
+          &.green {
+            border: 3px solid #88ef88;
+          }
+          &.blue {
+            border: 3px solid #0aaaf7;
+          }
+          &.purple {
+            border: 3px solid #ea54ea;
+          }
+        }
+      }
+    }
+
+    .completed {
+      .circle.purple {
+        border: 3px solid #fff;
+        transition: border 0.7s;
+      }
+      .path-tick {
+        stroke-dasharray: 49.497474670410156;
+        stroke-dashoffset: 0;
+        animation: dash 0.6s linear forwards;
+        stroke-opacity: 1;
+        transition: stroke-opacity 0.1s step;
+        opacity: 1;
+      }
+    }
+
+    .path-tick {
+      opacity: 0;
+    }
+  }
+}

@@ -1,0 +1,92 @@
+.batch-table {
+    .batch-head {
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 24px;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #fff;
+            background: #f36b81;
+            border: none;
+            outline: none;
+            border-radius: 40px;
+        }
+    }
+    table {
+        tr {
+            th {
+                background: #f36b81;
+                color: #fff;
+                padding: 10px;
+                font-size: 14px;
+                box-shadow: 2px -2px 11px 2px rgba(0, 0, 0, 0.15);
+                text-align: center;
+            }
+            td {
+                color: #000;
+                font-size: 14px;
+                text-align: center;
+                padding: 12px 10px;
+                text-transform: uppercase;
+                text-align: center;
+                img {
+                    width: 100%;
+                }
+                .batch-user {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    img {
+                        width: 60px;
+                    }
+                    span {
+                        font-size: 12px;
+                    }
+                }
+                .instruction-imgs {
+                    img {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        margin-left: -27px;
+                        border: 2px solid #f36b81;
+                        &:nth-child(1) {
+                            margin-left: 0;
+                        }
+                    }
+                }
+                .instruction-box {
+                    img {
+                        width: 70px;
+                    }
+                }
+                .batch-class {
+                    img {
+                        width: 80px;
+                    }
+                }
+                button {
+                    outline: none;
+                    border: none;
+                }
+
+                button.status {
+                    padding: 10px 16px;
+                    border-radius: 40px;
+                    color: #fff;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    &.active {
+                        background: green;
+                    }
+                    &.inactive {
+                        background: red;
+                    }
+                }
+            }
+        }
+    }
+}

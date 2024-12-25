@@ -1,0 +1,53 @@
+.change-pass {
+    form {
+        input {
+            width: 100%;
+            padding: 4px 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 20px; 
+        }
+    }
+
+    p {
+        color: #7b809a;
+        font-size: 16px;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        li {
+            color: #7b809a;
+            font-size: 14px;
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 5px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            &::before {
+                content: '';
+                position: absolute;
+                top: 6px;
+                left: 0;
+                background: #7b809a;
+                height: 8px;
+                width: 8px;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #2e8b57;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: auto;
+    }
+}

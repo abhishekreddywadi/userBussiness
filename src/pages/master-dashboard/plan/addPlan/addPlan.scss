@@ -1,0 +1,68 @@
+.add-plan {
+    .add-plan-container {
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            .input-container {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 20px;
+                width: 100%;
+                span {
+                    height: 80px;
+                    width: 80px;
+                    border: 1px dashed #000;
+                    border-radius: 5px;
+                    img {
+                        width: 100%;
+                        border-radius: 5px;
+                    }
+                }
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                label {
+                    font-size: 14px;
+                }
+                input, select {
+                    border-radius: 3px;
+                    border: 1px solid rgba(255, 158, 116, 0.3411764706);
+                    color: #000000;
+                    padding: 7px 10px;
+                }
+            }
+        }
+    }
+
+    .buttons {
+        button {
+            border: 0;
+            outline: none;
+            border-radius: 40px;
+            padding: 8px 15px;
+            &:nth-child(1) {
+                background: #ff9e74;
+            }
+            &:nth-child(2) {
+                background: #fff;
+                border: 1px solid #000;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .add-plan {
+        .add-plan-container {
+            form {
+                .input-container {
+                    width: 48%;
+                    &:nth-child(1), &:last-child {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

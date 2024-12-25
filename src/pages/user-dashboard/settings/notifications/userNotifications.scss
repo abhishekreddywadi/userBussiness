@@ -1,0 +1,65 @@
+.notifications {
+    .notifications-heading  {
+        h5 {
+            font-size: 1.25rem;
+            line-height: 1.375;
+            font-weight: 700;
+            letter-spacing: 0em;
+            opacity: 1;
+            color: #344767;
+        }
+        p {
+            font-size: 0.875rem;
+            font-weight: 300;
+            line-height: 1.5;
+            letter-spacing: 0.02857em;
+            opacity: 1;
+            color: #7b809a;
+        }
+    }
+
+    .notifications-table {
+        tr {
+            th {
+                padding: 12px 24px 12px 4px;
+                border: 0.0625rem solid #f0f2f5;
+                font-size: 1rem;
+                font-weight: 300;
+                line-height: 1.6;
+                letter-spacing: 0.01071em;
+                color: #7b809a;
+                &:not(:nth-child(1)) {
+                    padding: 12px 48px 12px 48px;
+                }
+            }
+    
+            td {
+                padding: 12px 24px 12px 4px;
+                p {
+                    font-size: 0.875rem;
+                    font-weight: 300;
+                    line-height: 1.5;
+                    letter-spacing: 0.02857em;
+                    color: #344767;
+                    font-weight: 400;
+                    margin-bottom: 0;
+                }
+                span {
+                    font-size: 0.75rem;
+                    line-height: 1.25;
+                    letter-spacing: 0.03333em;
+                    color: #7b809a;
+                    font-weight: 400;
+                }
+            }
+            &:last-child {
+                td {
+                    span {
+                        font-size: 0.875rem;
+                        line-height: 1.5;
+                    }
+                }
+            }
+        }
+    }
+}

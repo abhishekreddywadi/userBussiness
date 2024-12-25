@@ -1,0 +1,34 @@
+input,
+select,
+textarea {
+  outline: none;
+  box-shadow: none;
+  resize: none !important;
+}
+
+.main-plan-tabs {
+  margin-bottom: 0px !important;
+  width: fit-content;
+  position: relative;
+  z-index: 5;
+  li {
+    button {
+      color: #f36b81;
+      border-radius: 0px !important;
+      &.active,
+      &:hover {
+        background: #f36b81 !important;
+        color: #000;
+      }
+    }
+  }
+}
+
+.batch {
+  .input-container {
+    .batch-input {
+      border: 1px solid hsl(0, 0%, 80%);
+      min-height: 38px !important;
+    }
+  }
+}

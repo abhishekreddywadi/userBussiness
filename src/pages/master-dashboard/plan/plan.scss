@@ -1,0 +1,105 @@
+.main-plan-tabs {
+    margin-bottom: -80px !important;
+    width: fit-content;
+    position: relative;
+    z-index: 5;
+    li {
+        button {
+            color: #f36b81;
+            border-radius: 0px !important;
+            &.active, &:hover {
+                background: #f36b81 !important;
+                color: #000;
+            }
+        }
+    }
+}
+
+.master-plan {
+    .plan-head {
+        button {
+            background: #f36b81;
+            outline: none;
+            box-shadow: none;
+            padding: 8px 15px;
+            border-radius: 40px;
+            min-width: 140px;
+            border: 0;
+            color: #fff;
+        }
+    }
+    .plan-list {
+        .plan-card {
+            background: #fff;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 1.6rem;
+            img {
+                width: 80px;
+            }
+            h3 {
+                
+                font-size: 22px;
+            }
+            h3.discounted {
+                color: red;
+                text-decoration: line-through;
+                font-size: 16px;
+            }
+            h5 {
+                color: #f36b81;
+                font-size: 15px;
+            }
+
+            span {
+                font-weight: bold;
+                font-size: 14px;
+            }
+
+            h6 {
+                font-size: 22px;
+                min-height: 19.2px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+
+            .buttons {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                button {
+                    background: none;
+                    outline: none;
+                    box-shadow: none;
+                    padding: 3px 15px;
+                    border-radius: 40px;
+                    min-width: 100px;
+                    &:nth-child(1) {
+                        border: 1px solid red;
+                        color: red;
+                    }
+                    &:nth-child(2) {
+                        border: 1px solid #f36b81;
+                        color: #f36b81;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .master-plan {
+        .plan-list {
+            .plan-card-box {
+                width: 30%;
+            }
+        }
+    }
+}

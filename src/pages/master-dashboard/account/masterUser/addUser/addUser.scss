@@ -1,0 +1,180 @@
+.create-user {
+  form {
+    background: #fff;
+    padding: 15px;
+    .user-img {
+      border: 1px solid #dadada;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 100%;
+      }
+    }
+    .input-container {
+      display: flex;
+      flex-direction: column;
+      color: #000;
+      input[type="checkbox"] {
+        height: 15px;
+        width: 15px;
+        min-width: unset;
+      }
+      label {
+        line-height: 1.4;
+        min-height: 20px;
+        margin-bottom: 4px;
+      }
+      span.uploaded-img {
+        height: 80px;
+        margin-bottom: 15px;
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #cacaca;
+        background: #fff;
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+      .input-box {
+        gap: 15px;
+        input {
+          width: calc(100% - 57px);
+        }
+        button {
+          background: #5b92ff;
+          color: #fff;
+          outline: none;
+          border: 0;
+          min-height: 38px;
+        }
+      }
+      div {
+        span {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .input-container.check {
+      background: #fff;
+      padding: 8px;
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      .row {
+        label {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .input-container.img-container {
+      flex-wrap: wrap;
+      flex-direction: row !important;
+    }
+  }
+  .signature-list {
+    div {
+      img {
+        cursor: pointer;
+      }
+    }
+  }
+
+  #button {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: #fff url("https://scottyzen.sirv.com/Images/v/finger-print.png")
+      no-repeat center;
+    background-size: contain;
+    display: block;
+    margin: auto;
+    position: relative;
+    box-shadow: 0 1px 10px 0 rgba(1, 1, 1, 0.2),
+      0 1.5px 4px 0 rgba(1, 1, 1, 0.2);
+  }
+
+  .canvas {
+    display: flex;
+    height: 30vh;
+    background: #ededed;
+    .face-id-wrapper {
+      width: 80px;
+      height: 80px;
+      margin: auto;
+      position: relative;
+      svg {
+        position: absolute;
+        fill: #aaa;
+        stroke: #aaa;
+      }
+      &.active {
+        .face-id-default {
+          opacity: 0;
+          transform: scale(1.2);
+          transition: opacity 1.5s, transform 1s;
+          fill: lightblue;
+          stroke: lightblue;
+        }
+        .circle {
+          opacity: 1;
+          transition: opacity 0.7s, transform 2.2s;
+          &.green {
+            transform: rotateX(360deg);
+          }
+          &.blue {
+            transform: rotateY(360deg);
+          }
+          &.purple {
+            transform: rotateY(360deg) rotateX(360deg);
+          }
+        }
+      }
+      .circle {
+        border-radius: 50%;
+        border: 3px solid #000;
+        width: 80px;
+        height: 80px;
+        background: transparent;
+        box-sizing: border-box;
+        position: absolute;
+        opacity: 0;
+        &.green {
+          border: 3px solid #88ef88;
+        }
+        &.blue {
+          border: 3px solid #0aaaf7;
+        }
+        &.purple {
+          border: 3px solid #ea54ea;
+        }
+      }
+    }
+  }
+
+  .completed {
+    .circle.purple {
+      border: 3px solid #fff;
+      transition: border 0.7s;
+    }
+    .path-tick {
+      stroke-dasharray: 49.497474670410156;
+      stroke-dashoffset: 0;
+      animation: dash 0.6s linear forwards;
+      stroke-opacity: 1;
+      transition: stroke-opacity 0.1s step;
+      opacity: 1;
+    }
+  }
+
+  .path-tick {
+    opacity: 0;
+  }
+}

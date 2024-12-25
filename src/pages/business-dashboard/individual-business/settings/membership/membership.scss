@@ -1,0 +1,106 @@
+.membership {
+  .nav-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    margin-bottom: 15px;
+    .nav-item {
+      border: none;
+      button.nav-link {
+        color: #344767;
+        padding: 8px 16px;
+        min-width: 150px;
+        &.active {
+          // box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+          border-radius: 5px;
+          border-color: #dddddd;
+        }
+      }
+    }
+  }
+  .plan-card {
+    text-align: center;
+    color: #fff;
+    box-shadow: none !important;
+    padding: 0 !important;
+    p {
+      margin: 0;
+    }
+    .plan-card-main {
+      box-shadow: none !important;
+      padding: 0 0 24px;
+      .status {
+        font-size: 12px !important;
+        color: #000;
+        font-weight: bold;
+      }
+      .date {
+        font-size: 12px !important;
+        color: #000;
+        font-weight: bold;
+      }
+    }
+    .plan-details {
+      padding: 0 !important;
+    }
+
+    .plan-purchase-text {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      h6 {
+        color: #000;
+        font-size: 12px;
+      }
+    }
+
+    .title {
+      color: #fff;
+      font-size: 14px;
+      padding-bottom: 10px;
+    }
+    .price {
+      color: #fff;
+      font-size: 26px;
+    }
+    .period {
+      font-size: 12px !important;
+    }
+    .days-left {
+      color: #fff;
+      font-size: 12px !important;
+      font-weight: bold;
+      text-align: right;
+      padding-top: 30px;
+    }
+    .features {
+      padding: 80px 10px 10px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      background-color: #333237;
+      color: #fff;
+      p {
+        padding-bottom: 5px;
+        font-size: 14px;
+        &:nth-last-child(2) {
+          padding-bottom: 0;
+        }
+      }
+    }
+      .see-more {
+        color: #e81c65;
+        font-size: 14px;
+      }
+    .plan-box {
+      background: #e81c65;
+      padding: 10px;
+      color: #fff;
+      width: calc(100% - 20px);
+      margin: 0 auto;
+      border-radius: 14px;
+      margin-bottom: -60px;
+      position: relative;
+    }
+  }
+}

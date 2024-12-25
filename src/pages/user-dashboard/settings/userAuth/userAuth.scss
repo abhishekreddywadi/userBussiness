@@ -1,0 +1,95 @@
+.auth {
+    .auth-heading {
+        h6 {
+            font-weight: 700;
+            letter-spacing: 0em;
+            opacity: 1;
+            text-transform: none;
+            vertical-align: unset;
+            -webkit-text-decoration: none;
+            text-decoration: none;
+            color: #344767;
+            font-size: 1.25rem;
+            line-height: 1.375;
+        }
+        p.auth-tag {
+            height: auto;
+            padding: 0.55em 0.9em;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border: none;
+            border-radius: 0.375rem;
+            position: relative;
+            &.enabled {
+                background: #bce2be;
+                color: #339537;
+            }
+        }
+    }
+    ul {
+        li {
+            p, span {
+                font-weight: 300;
+                line-height: 1.6;
+                letter-spacing: 0.01071em;
+                opacity: 1;
+                text-transform: none;
+                vertical-align: unset;
+                -webkit-text-decoration: none;
+                text-decoration: none;
+                color: #7b809a;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .setup {
+                span {
+                    font-size: 0.875rem;
+                }
+                button {
+                    background: none;
+                    min-width: 64px;
+                    border: 1px solid rgba(233, 30, 99, 0.5);
+                    font-weight: 700;
+                    border-radius: 0.5rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    min-height: 2rem;
+                    padding: 0.375rem 1rem;
+                    font-size: 0.75rem;
+                    background: transparent;
+                    color: #344767;
+                    border-color: #344767;
+                }
+            }
+        }
+    }
+}
+
+.auth-box-container {
+    background: #fff;
+    box-shadow: 0rem 0.25rem 0.375rem -0.0625rem rgba(0, 0, 0, 0.1), 0rem 0.125rem 0.25rem -0.0625rem rgba(0, 0, 0, 0.06);
+    padding: 16px;
+    margin-top: 20px;
+    .auth-box {
+        img {
+            width: 30px;
+        }
+        p {
+            font-weight: bold;
+            font-size: 14px;
+        }
+        button {
+            border: 1px solid #000;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 1px 15px;
+        }
+    }
+}

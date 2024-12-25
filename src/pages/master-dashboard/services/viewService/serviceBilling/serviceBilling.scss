@@ -1,0 +1,50 @@
+.service-billing {
+  .details {
+    .details-box {
+      background: #fff;
+      border-radius: 10px 10px 6px 6px;
+      box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12);
+      width: 100%;
+      h4 {
+        padding: 1rem 1.5rem;
+        background: #f36b81;
+        color: #fff;
+        border-radius: 10px 10px 0 0;
+      }
+
+      &:nth-child(2) {
+        ul {
+          padding-bottom: 0 !important;
+        }
+      }
+      ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 7px;
+        padding: 0 1.5rem 1.5rem !important;
+        li {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        &.details-box-footer {
+          border-top: 3px dashed #dedede;
+          margin-top: 10px !important;
+          padding-top: 8px !important;
+          padding-bottom: 1.5rem !important;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .service-billing {
+    .details {
+      .details-box {
+        width: 48%;
+      }
+    }
+  }
+}

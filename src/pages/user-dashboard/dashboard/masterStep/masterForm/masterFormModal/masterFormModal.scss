@@ -1,0 +1,18 @@
+.master-form-modal {
+    ul {
+        list-style-type: none;
+        li {
+            width: 100%;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .master-form-modal {
+        ul {
+            li {
+                width: 48%;
+            }
+        }
+    }
+}

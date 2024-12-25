@@ -1,0 +1,89 @@
+.staff-group {
+  table {
+    border: 0;
+    border-collapse: none;
+    width: 100%;
+    border-spacing: 0px;
+    margin-top: 30px;
+    tr {
+      th {
+        background: #f26b80;
+        color: #fff;
+        font-weight: 700;
+        border-right: 1px solid #fff;
+        &:last-child {
+          border-right: 0;
+        }
+      }
+
+      th,
+      td {
+        padding: 10px 8px;
+        font-size: 14px;
+        text-align: center;
+      }
+
+      td {
+        border: 1px solid #d1d1d1;
+        border-top: 0;
+        border-right: 0;
+        &:last-child {
+          border-right: 1px solid #d1d1d1;
+        }
+        p.description {
+          max-width: 180px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          text-wrap: nowrap;
+          margin: 0 auto;
+          text-align: center;
+        }
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+        .attendance-btns {
+          button {
+            font-size: 10px;
+            min-width: 145px;
+            &:nth-child(2) {
+              background: #ff9e74;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .staff-attendance-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    h4 {
+      color: #000;
+    }
+    button {
+      background: #ff9e74;
+      padding: 7px 30px;
+      color: #fff;
+      width: fit-content;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+  }
+
+  .entries-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    select {
+      width: fit-content;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+.accounts {
+    .accounts-heading  {
+        h5 {
+            font-size: 1.25rem;
+            line-height: 1.375;
+            font-weight: 700;
+            letter-spacing: 0em;
+            opacity: 1;
+            color: #344767;
+        }
+        p {
+            font-size: 0.875rem;
+            font-weight: 300;
+            line-height: 1.5;
+            letter-spacing: 0.02857em;
+            opacity: 1;
+            color: #7b809a;
+        }
+    }
+
+    .accounts-list {
+        .account-box {
+            border-top: 1px solid rgba(52, 71, 103, 0.07);
+            color: #344767;
+            padding: 20px 15px;
+            &:first-child {
+                border-top: 0;
+            }
+
+            h3 {
+                font-size: 1.25rem;
+                line-height: 1.375;
+                letter-spacing: 0em;
+                opacity: 1;
+                color: #344767;
+                font-weight: 600;
+            }
+
+            span {
+                font-size: 0.875rem;
+                font-weight: 300;
+                line-height: 1.5;
+                letter-spacing: 0.02857em;
+                color: #7b809a;
+            }
+
+            img {
+                width: 60px;
+                height: 60px;
+                object-fit: contain;
+            }
+        }
+    }
+}

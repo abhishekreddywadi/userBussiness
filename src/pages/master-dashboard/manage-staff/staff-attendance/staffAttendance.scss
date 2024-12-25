@@ -1,0 +1,236 @@
+.custom-staff-table {
+  margin-bottom: 20px;
+  color: #000;
+  box-shadow: 0 0 10px rgba(91, 146, 255, 0.15);
+
+  h5 {
+    margin-bottom: 20px;
+    font-size: 15px;
+    font-weight: normal;
+  }
+
+  input[type="search"]{
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #1a1a1a;
+    padding: 2px 10px;
+    display: flex;
+    margin-left: auto;
+    margin-bottom: 20px;
+  }
+
+  .export-button {
+    font-size: 12px;
+  }
+
+  .table {
+    margin-bottom: 0;
+    tr {
+      th {
+          font-weight: bold;
+          background: #f36b81;
+          color: #fff;
+          box-shadow: 2px -2px 11px 2px rgba(0, 0, 0, 0.15);
+      }
+      th, td {
+          color: #000;
+          border: 1px solid rgba(91, 146, 255, 0.15) !important;
+          text-align: center;
+          padding: 10px;
+          font-size: 14px;
+      }
+      td {
+        vertical-align: bottom;
+          select {
+              width: 100%;
+              padding: 3px 10px;
+              border-color: #dedede;
+          }
+
+          .timing {
+              justify-content: space-between;
+              gap: 10px;
+              p {
+                  font-size: 14px;
+                  margin-bottom: 3px;
+              }
+
+              .time {
+                  .time-select {
+                      gap: 7px;
+                      button {
+                          background: #5B92FF;
+                          border-radius: 40px;
+                          padding: 4px 12px;
+                          color: #fff;
+                          font-size: 14px;
+                          border: none;
+                          min-width: 60px;
+                          &:disabled {
+                              opacity: .5;
+                          }
+                      }
+                  }
+              }
+          }
+
+          &:nth-child(1), &:nth-child(2) {
+            vertical-align: middle;
+          }
+      }
+    }
+  }
+
+  .id-request, .staff-info {
+    display: flex;
+    align-items: center;
+
+    .user-image, .staff-image {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+  }
+
+  .status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+
+    &.accepted {
+      background-color: #28a745;
+    }
+
+    &.pending {
+      background-color: #ffc107;
+    }
+
+    &.rejected, &.declined {
+      background-color: #dc3545;
+    }
+    &.in-review {
+      background-color: #5e93fb;
+    }
+    
+  }
+
+  .export-button {
+    float: right;
+  }
+
+  .search-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    p {
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+    .search-head-right {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      input {
+        border: 1px solid #cbcbcb;
+        padding: 4px 15px;
+        width: 100%;
+      }
+      button {
+        background: #F26B80;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        outline: none;
+        border: none;
+        border-radius: 40px;
+        padding: 4px 14px;
+      }
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .page-item {
+    .page-link {
+      color: #ee6d81;
+    }
+  }
+  .page-item.active {
+    .page-link {
+      background-color: #ee6d81 !important;
+      border-color: #ee6d81 !important;
+      color: #fff;
+    }
+  }
+}
+
+.staff-sub {
+  width: 100%;
+  justify-content: flex-end !important;
+  border-top: 1px solid #e3d5e5 !important;
+  padding-top: 10px;
+  a.nav-link {
+      max-width: fit-content ;
+  }
+}
+
+.custom-staff-id {
+  .sub-head-nav::before {
+      top: 60px;
+  }
+
+  button.back {
+    background: none;
+    outline: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    border: none;
+    color: #F26B80;
+    text-decoration: underline;
+  }
+
+  .staff-top {
+      button {
+          display: inline-block;
+          padding: 6px 15px;
+          border-radius: 20px;
+          text-align: center;
+          font-size: 13px;
+          font-weight: bold;
+          color: #fff;
+          background: #F26B80;
+          border: none;
+          outline: none;
+      }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+.custom-staff-table {
+  .search-head {
+    .search-head-right {
+      width: calc(100% - 20%);
+      justify-content: flex-end;
+      input {
+        width: 32%;
+      }
+      button {
+        width: 20%;
+      }
+    }
+  }
+}
+}

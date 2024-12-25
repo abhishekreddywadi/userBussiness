@@ -1,0 +1,399 @@
+.master-account {
+  .profile-business-header {
+    background-color: #f26b80;
+    padding: 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .profile-section {
+      display: flex;
+      align-items: center;
+      .profile-image {
+        width: 50px;
+        height: 50px;
+      }
+    }
+    .documents-section {
+      display: flex;
+      justify-content: flex-end;
+      gap: 18px;
+      .document-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
+        svg {
+          width: 30px;
+          height: 30px;
+          color: #fff;
+        }
+        img {
+          width: 30px;
+          height: 30px;
+        }
+        p {
+          margin-bottom: 0;
+          color: #fff;
+          font-size: 12px;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .profile-card {
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 15px;
+    .account-tabs {
+      border: 0;
+      display: flex;
+      align-items: center;
+      .nav-item {
+        margin-right: 10px;
+        &:last-child {
+          margin-right: 0;
+        }
+        .nav-link {
+          background: none;
+          border: none;
+          font-size: 14px;
+          color: #000;
+          border-radius: 10px;
+          &.active {
+            background-color: #f26b80;
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    .profile-business-id {
+      p {
+        margin-bottom: 5px;
+        color: #000;
+        font-size: 12px;
+        &:last-child {
+          font-size: 14px;
+          color: #f26b80;
+          word-break: break-all;
+        }
+      }
+    }
+    p.admin {
+      margin-bottom: 30px;
+      margin-top: 60px;
+      max-width: 400px;
+      margin-left: auto;
+      text-align: left;
+    }
+
+    .profile-roles {
+      gap: 15px 0;
+      max-width: 400px;
+      margin-left: auto;
+      background: #e5e5e5;
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+      p.role-name {
+        margin-bottom: 0px;
+        line-height: 1.4;
+      }
+      p.role-label {
+        font-size: 14px;
+        color: #f26b80;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .master-side {
+    .master-side-head {
+      background-color: #f26b80;
+      color: #fff;
+      padding: 15px 15px;
+      font-weight: bold;
+      font-size: 16px;
+      h5 {
+        text-transform: uppercase;
+        strong {
+          color: #000;
+        }
+      }
+    }
+
+    .master-side-content {
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      padding: 1.5rem;
+      .master-content-box {
+        p {
+          font-size: 14px;
+        }
+        span {
+          background-color: #f26b80;
+          height: 40px;
+          width: 40px;
+          min-height: 40px;
+          min-width: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 3px;
+          border-radius: 50%;
+          svg {
+            color: #fff;
+          }
+        }
+        &:not(:nth-child(1)) {
+          word-break: break-all;
+        }
+      }
+    }
+  }
+
+  .care-of-text {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #f26b80;
+  }
+
+  .profile-care-card {
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    .accordion-header {
+      button {
+        background: none;
+        box-shadow: none;
+        &::after {
+          width: 13px;
+          height: 13px;
+          background-size: 100%;
+        }
+      }
+    }
+    .accordion-collapse {
+      border: none;
+    }
+    .profile-accordion-head {
+      img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+      }
+      .care-for-content {
+        h6 {
+          font-size: 14px;
+          font-weight: bold;
+        }
+        p {
+          font-size: 12px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    button.button {
+      background: none;
+      padding: 4px 16px;
+      outline: none;
+      border: 1px solid #000;
+      border-radius: 20px;
+      color: #000;
+    }
+    &.add-paymemt {
+      padding: 20px 15px;
+    }
+
+    .accordion-body {
+      .payment-head {
+        img {
+          width: 60px;
+        }
+      }
+      img.qr {
+        width: 100%;
+      }
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .branch-section {
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 15px;
+    .branch-details {
+      img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+      }
+      .branch-content {
+        p {
+          margin-bottom: 0px;
+          color: #344767;
+          font-size: 1.25rem;
+          &:first-child {
+            color: #f26b80;
+            font-weight: bold;
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+    select {
+      padding: 10px 15px;
+      border-radius: 3px;
+      border: 1px solid #d4d4d4;
+    }
+
+    button {
+      background-color: #f26b80;
+      color: white;
+      border: none;
+      outline: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+    }
+  }
+
+  .franchise-cards-list {
+    .franchise-card {
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      padding: 15px;
+      text-align: center;
+      h5 {
+        font-weight: bold;
+        color: #f26b80;
+        font-size: 1.25rem;
+        margin-bottom: 0;
+      }
+      p {
+        margin-bottom: 0;
+        font-size: 14px;
+        color: #757575;
+        margin-top: 10px;
+      }
+      button {
+        margin-top: 10px;
+        border: 1px solid #f26b80;
+        color: #f26b80;
+        outline: none;
+        border-radius: 4px;
+        padding: 5px 15px;
+      }
+    }
+  }
+
+  .plan-card {
+    background: #fff;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 1.6rem;
+    img {
+      width: 80px;
+    }
+    h3 {
+      font-size: 18px;
+    }
+    h3.discounted {
+      color: red;
+      text-decoration: line-through;
+      font-size: 12px;
+    }
+    h5 {
+      color: #f36b81;
+      font-size: 15px;
+    }
+
+    span {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    h6 {
+      font-size: 18px;
+      min-height: 19.2px;
+    }
+
+    p {
+      font-size: 13px;
+    }
+
+    .buttons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      button {
+        background: none;
+        outline: none;
+        box-shadow: none;
+        padding: 3px 15px;
+        border-radius: 40px;
+        min-width: 100px;
+        &:nth-child(1) {
+          border: 1px solid red;
+          color: red;
+        }
+        &:nth-child(2) {
+          border: 1px solid #f36b81;
+          color: #f36b81;
+        }
+      }
+    }
+  }
+
+  .order-card-box {
+    .order-card {
+      p {
+        color: gray;
+        font-size: 13px;
+      }
+      h5 {
+        font-size: 14px;
+      }
+      h3 {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .master-account {
+    .profile-card {
+      p.admin {
+        margin-top: -30px !important;
+      }
+      .profile-roles {
+        max-height: 350px;
+        overflow-y: scroll;
+      }
+    }
+  }
+}

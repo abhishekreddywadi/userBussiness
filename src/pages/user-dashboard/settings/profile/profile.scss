@@ -1,0 +1,71 @@
+.profile {
+  .profile-info {
+    gap: 40px;
+    position: relative;
+    button.edit {
+        background: none;
+        outline: none;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        cursor: pointer;
+        position: absolute;
+        top: -27px;
+        left: -13px;
+        img {
+            width: 20px;
+        }
+        span {
+            font-size: 10px;
+        }
+    }
+    .profile-edit {
+        width: fit-content;
+        left: unset !important;
+        right: 0;
+    }
+    .profile-info-left {
+      .user-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 75px;
+        width: 90px;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding: 5px;
+        img {
+          width: 100%;
+        }
+      }
+    }
+    .profile-info-right {
+      p {
+        img {
+          width: 22px;
+        }
+        strong {
+          color: #f26b86;
+        }
+        span {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .profile-skills {
+    border-top: 1px solid #d9d9d9;
+    ul {
+      list-style-type: none;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .profile {
+    .profile-info {
+      gap: 80px;
+    }
+  }
+}

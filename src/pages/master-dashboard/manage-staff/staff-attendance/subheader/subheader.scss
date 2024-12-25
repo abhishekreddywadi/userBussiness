@@ -1,0 +1,40 @@
+.submenu {
+    #submenu-container {
+        .daterangepicker{
+            opacity: 1 !important;
+        }
+        
+        .nav-pills {
+            padding-bottom: 15px;
+            li {
+                width: fit-content;
+                max-width: fit-content;
+                .nav-link {
+                    color: #F26B80;
+                    display: block;
+                    padding: 0.32rem 0.8rem;
+                    background: none;
+                    border: 0;
+                    width: fit-content;
+                    &:hover, &.active {
+                        background: #F26B80;
+                        color: #000;
+                    }
+                }
+            }
+        }
+        .header-right-pills {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 5;
+            top: 8px;
+        }
+        
+        .navbar {
+            .tab-content {
+                width: 100%;
+            }
+        }
+    }
+}
