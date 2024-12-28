@@ -18,6 +18,8 @@ import ViewService from "../pages/master-dashboard/services/viewService/ViewServ
 import ServiceBilling from "../pages/master-dashboard/services/viewService/serviceBilling/ServiceBilling";
 import ManageCourse from "../pages/master-dashboard/courses/manageCourse/ManageCourse";
 import ViewCourse from "../pages/master-dashboard/courses/viewCourse/ViewCourse";
+import ManageUsersAttendance from "../pages/master-dashboard/manage-user/manage-users-Attendance/rfIdAttendance/ManageusersAttendance";
+import Dashboard from "../pages/master-dashboard/dashboard/Dashboard";
 
 const Routing = () => {
   return (
@@ -37,6 +39,9 @@ const Routing = () => {
         <Route path="/view-staff" element={<MasterAccount />} />
         <Route path="/staff-attendance" element={<StaffAttendance />} />
         <Route path="/user-attendance" element={<UserAttendance />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+
+        <Route path="/rfid-attendance" element={<ManageUsersAttendance />} />
         <Route path="/add-user" element={<AddUser />} />
         <Route path="/add-staff" element={<AddStaff />} />
         <Route path="/view-user" element={<MasterAccount />} />

@@ -82,7 +82,7 @@ function UserAttendance() {
         {!showStaffGroup ? (
           <div className="staff-attendance">
             <div className="staff-attendance-head">
-              <h4>Add Attendance</h4>
+              <h4>Add Attendance  </h4>
               <button type="button" onClick={() => setShowStaffGroup(true)}>
                 Add Group Attendance
               </button>

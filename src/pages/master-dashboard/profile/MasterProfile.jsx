@@ -14,6 +14,7 @@ import {
   faUser,
   faChevronDown,
   faBell,
+  faChevronUp,
 } from "@fortawesome/free-solid-svg-icons";
 
 import "./masterProfile.scss";
@@ -47,19 +48,7 @@ const contactListArray = [
   {
     name: "Bruce M",
     img: ContactImg,
-  },
-  {
-    name: "Sandra A",
-    img: ContactImg,
-  },
-  {
-    name: "Katty L",
-    img: ContactImg,
-  },
-  {
-    name: "Emma O",
-    img: ContactImg,
-  },
+  }
 ];
 
 const businessContactsArray = [
@@ -114,6 +103,61 @@ function MasterProfile() {
   const [showBusinessPurchase, setShowBusinessPurchase] = useState(null);
   const [franchiseData, setFranchiseData] = useState(franchiseArray);
 
+  const [openConversations, setOpenConversations] = useState([]);
+  const [conversations, setConversations] = useState([
+    {
+      id: 1,
+      title: "B2B ",
+      businessTitle: "MASTER BUSINESS",
+      notifications: 2,
+      messages: [
+        {
+          id: 1,
+          username: "ROHAN",
+          userId: "MU12345",
+          text: "Hi HOO, ARE YOU THIS DAY'S WHAT IS .....",
+          timestamp: "2 hours ago",
+        },
+        {
+          id: 2,
+          username: "JOHN",
+          userId: "MU12346",
+          text: "Hello team, any updates on the project?",
+          timestamp: "3 hours ago",
+        },
+        {
+          id: 3,
+          username: "SARAH",
+          userId: "MU12347",
+          text: "Meeting scheduled for tomorrow at 10 AM",
+          timestamp: "5 hours ago",
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: "TEAM ",
+      businessTitle: "PROJECT ALPHA",
+      notifications: 5,
+      messages: [
+        {
+          id: 1,
+          username: "MIKE",
+          userId: "MU12348",
+          text: "New requirements added to the document",
+          timestamp: "1 hour ago",
+        },
+        {
+          id: 2,
+          username: "LISA",
+          userId: "MU12349",
+          text: "I'll review and update the timeline",
+          timestamp: "4 hours ago",
+        },
+      ],
+    },
+  ]);
+
   const handleBusinessClick = (id) => {
     if (showBusinessPurchase === id) {
       setShowBusinessPurchase(null);
@@ -122,250 +166,203 @@ function MasterProfile() {
     }
   };
 
-  console.log("showBusinessPurchase", showBusinessPurchase)
+  const toggleConversation = (conversationId) => {
+    setOpenConversations((prev) =>
+      prev.includes(conversationId)
+        ? prev.filter((id) => id !== conversationId)
+        : [...prev, conversationId]
+    );
+  };
+
+  const handleReply = (conversationId, messageId) => {
+    // Add your reply logic here
+    console.log(`Replying to message ${messageId} in conversation ${conversationId}`);
+  };
+
+  console.log("showBusinessPurchase", showBusinessPurchase);
 
   return (
-    <div className={`dashboard ${ navButtonClick && "dashboard-full" } master-profile`}>
+    <div
+      className={`dashboard ${navButtonClick && "dashboard-full"} master-profile`}
+    >
       <Container>
         <Header />
-        <div className="row py-5">
-          <div className="col-12 col-md-7 col-lg-8">
-            <div className="contacts-list-container d-flex flex-wrap align-items-center gap-3">
-              <h5 className="w-100 mb-0">
+        <div className="row py-3 py-md-5">
+          <div className="col-12 col-lg-8 mb-4 mb-lg-0">
+            <div className="contacts-list-container d-flex flex-wrap align-items-center gap-3 mb-4">
+              <h5 className="w-100 mb-3">
                 📚 YOUR STUDENTS MEMBER CONTACTS BOOKS
               </h5>
-              <div className="contact-list d-flex align-items-center gap-4">
+              <div className="contact-list d-flex align-items-center flex-wrap gap-3">
                 <div className="contact-box">
                   <button type="button">+</button>
                 </div>
-                {contactListData?.map((contact, i) => {
-                  return (
-                    <div className="contact-box" key={i}>
-                      <img src={contact.img} alt="contact-img" />
-                      <span>{contact.name}</span>
-                    </div>
-                  );
-                })}
+                {contactListData?.map((contact, i) => (
+                  <div className="contact-box" key={i}>
+                    <img src={contact.img} alt="contact-img" />
+                    <span>{contact.name}</span>
+                  </div>
+                ))}
               </div>
             </div>
-            <div className="business-list-container mt-5">
+
+            <div className="business-list-container">
               <h5 className="mb-4">Your Business 5/2</h5>
               <div className="business-list">
-                {businessContactsData?.map((business, i) => {
-                  return (
-                    <div className="business-box" key={i}>
-                      <img src={ContactImg} alt="profile-img" />
-                      <p onClick={() => navigate('/master-account')} style={{cursor: 'pointer'}}>{business.name}</p>
-                      <span>
-                        <strong>{business.master_id}</strong>
-                      </span>
-                      <span>{business.department}</span>
+                {businessContactsData?.map((business, i) => (
+                  <div className="business-box" key={i}>
+                    <div className="business-header d-flex align-items-center gap-3">
+                      <img src={ContactImg} alt="profile-img" className="business-img" />
+                      <div className="business-info flex-grow-1">
+                        <p 
+                          onClick={() => navigate("/master-account")} 
+                          className="business-name mb-1"
+                        >
+                          {business.name}
+                        </p>
+                        <div className="business-details">
+                          <span className="id">
+                            <strong>{business.master_id}</strong>
+                          </span>
+                          <span className="department">{business.department}</span>
+                        </div>
+                      </div>
                       <span
-                        onClick={() =>
-                            handleBusinessClick(business.id)
-                        }
+                        className="toggle-btn"
+                        onClick={() => handleBusinessClick(business.id)}
                       >
                         <FontAwesomeIcon
                           icon={faChevronDown}
                           style={{ color: "#000" }}
                         />
                       </span>
+                    </div>
 
-                      <div className="user-staff-list d-flex flex-column w-100 mt-2">
-                        <span
-                          className="plan w-100"
-                          style={{ color: !business.plan && "red" }}
-                        >
-                          {business.plan ? business.plan : "No Plan active."}
-                        </span>
-                        {showBusinessPurchase === business.id && (
-                          <>
-                            {business.plan ? (
-                              <div className="plan-purchase">
-                                <h6>
-                                  <p>Purchase</p>
-                                  <p>24/12/24</p>
-                                </h6>
-
-                                <h6>
-                                  <p>Exp On</p>
-                                  <p>23/12/27</p>
-                                </h6>
+                    <div className="user-staff-list mt-3">
+                      <span
+                        className="plan w-100"
+                        style={{ color: !business.plan && "red" }}
+                      >
+                        {business.plan ? business.plan : "No Plan active."}
+                      </span>
+                      {showBusinessPurchase === business.id && (
+                        <div className="purchase-details">
+                          {business.plan ? (
+                            <div className="plan-purchase">
+                              <div className="purchase-info">
+                                <h6>Purchase</h6>
+                                <p>24/12/24</p>
                               </div>
-                            ) : (
-                              <div className="plan-purchase no-plan">
-                                <h6>
-                                  <p>Purchase Now</p>
-                                  <button type="button">
-                                    Click here to Purchase
-                                  </button>
-                                </h6>
-                              </div>
-                            )}
-
-                            <div className="user-staff-box-list d-flex align-items-center justify-content-between w-100">
-                              <div className="user-staff-box">
-                                <p>User</p>
-                                <div className="images">
-                                  <img src={ContactImg} alt="contact-img" />
-                                  <img src={ContactImg} alt="contact-img" />
-                                  <img src={ContactImg} alt="contact-img" />
-                                  <img src={ContactImg} alt="contact-img" />
-                                </div>
-                                <p>300/20</p>
-                              </div>
-                              <div className="user-staff-box">
-                                <p>Staff</p>
-                                <div className="images">
-                                  <img src={ContactImg} alt="contact-img" />
-                                  <img src={ContactImg} alt="contact-img" />
-                                  <img src={ContactImg} alt="contact-img" />
-                                  <img src={ContactImg} alt="contact-img" />
-                                </div>
-                                <p>300/20</p>
+                              <div className="expiry-info">
+                                <h6>Exp On</h6>
+                                <p>23/12/27</p>
                               </div>
                             </div>
-                          </>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            <div className="payment-method mt-5">
-              <h5 className="mb-0">Create Business 5/3</h5>
-              <button type="button">
-                <span>+</span> Add New Business
-              </button>
-            </div>
-            {/* <div className="franchise-list mt-5">
-              <div className="franchise-head d-flex flex-wrap gap-3 justify-content-between align-items-center">
-                <h5 className="mb-0">Business Franchise</h5>
-                <div className="business-dropdown">
-                  <p className="mb-1">Select your Business</p>
-                  <select name="" id="">
-                    <option value="">Reebok</option>
-                  </select>
-                </div>
-              </div>
-              {franchiseData?.map((data, i) => {
-                return (
-                  <div className="franchise-box" key={i}>
-                    <div className="franchise-box-head">
-                      <h6>{data.name}</h6>
-                      <div className="category">
-                        <p className="mb-1">Category: {data.category}</p>
-                        <div className="edit-icons d-flex aling-items-center justify-content-end gap-3">
-                          <button type="button">
-                            <FontAwesomeIcon icon={faEye} />
-                          </button>
-                          <button type="button">
-                            <FontAwesomeIcon icon={faPencil} />
-                          </button>
-                          <button type="button">
-                            <span>EDIT</span>
-                          </button>
-                          <button type="button">
-                            <FontAwesomeIcon icon={faGear} />
-                          </button>
+                          ) : (
+                            <div className="plan-purchase no-plan">
+                              <h6>Purchase Now</h6>
+                              <button type="button" className="purchase-btn">
+                                Click here to Purchase
+                              </button>
+                            </div>
+                          )}
                         </div>
-                      </div>
-                    </div>
-                    <p className="mb-1">Contact Number: {data.contact}</p>
-                    <p className="mb-1">Email address: {data.email}</p>
-                    <p className="mb-1">Address: {data.address}</p>
-                    <div className="active-users d-flex flex-wrap align-items-center gap-5 mt-3">
-                      <div className="users active-user-box d-flex align-items-center gap-3">
-                        <p className="mb-0">Active users 200</p>
-                        <div className="images d-flex align-items-center">
-                          <img src={ContactImg} alt="user" />
-                          <img src={ContactImg} alt="user" />
-                          <img src={ContactImg} alt="user" />
-                          <img src={ContactImg} alt="user" />
-                        </div>
-                      </div>
-                      <div className="staff active-user-box d-flex align-items-center gap-3">
-                        <p className="mb-0">Staff B</p>
-                        <div className="images d-flex align-items-center">
-                          <img src={ContactImg} alt="user" />
-                          <img src={ContactImg} alt="user" />
-                          <img src={ContactImg} alt="user" />
-                          <img src={ContactImg} alt="user" />
-                        </div>
-                      </div>
+                      )}
                     </div>
                   </div>
-                );
-              })}
-            </div> */}
+                ))}
+              </div>
+            </div>
+
+            <div className="payment-method mt-4">
+              <div  style={{ display: "flex", justifyContent: "space-between",alignItems: "center" }} >
+              <h5 className="mb-3">Create Business 5/3</h5>
+              <button type="button" style={{ background: "#2F3458", color: "#fff" }} className="add-business-btn">
+                <span>+</span> Add New Business
+              </button>
+              </div>
+             
+            </div>
           </div>
-          <div className="col-12 col-md-5 col-lg-4">
+
+          <div className="col-12 col-lg-4">
             <div className="master-business-details">
-              <Accordion>
-                <Accordion.Item eventKey="0">
-                  <Accordion.Header>
-                    <div className="icon">
-                      <span>
-                        <FontAwesomeIcon icon={faUser} />
-                      </span>
-                      <span>B2B CONVERSATION</span>
+              <div className="conversation-list">
+                {conversations.map((conversation) => (
+                  <div key={conversation.id} className="conversation-item">
+                    <div
+                      className="conversation-header"
+                      style={{
+                        // width: "100%",
+                        borderBottom: "1px solid #ccc",
+                        borderRadius: "20px",
+                        padding: "20px",
+                      }}
+                      onClick={() => toggleConversation(conversation.id)}
+                    >
+                      <div className="header-content  d-flex align-items-center justify-content-between w-100">
+                        <div className="user-info">
+                          <span className="profile-icon">
+                            <FontAwesomeIcon icon={faUser} />
+                          </span>
+                          <span className="conversation-title">
+                            {conversation.title}
+                          </span>
+                        </div>
+                        <div className="d-flex align-items-center gap-2">
+                          <h6 className="business-title mb-0">
+                            {conversation.businessTitle}
+                          </h6>
+                          <div className="notification-badge">
+                            <FontAwesomeIcon icon={faBell} />
+                            <span className="badge">{conversation.notifications}</span>
+                          </div>
+                          <div className="toggle-icon">
+                            <FontAwesomeIcon
+                              icon={
+                                openConversations.includes(conversation.id)
+                                  ? faChevronUp
+                                  : faChevronDown
+                              }
+                            />
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div className="notifications">
-                        <FontAwesomeIcon icon={faBell} />
-                        <span>2</span>
+
+                    <div
+                      className={`conversation-messages ${
+                        openConversations.includes(conversation.id) ? "open" : ""
+                      }`}
+                    >
+                      {conversation.messages.map((message) => (
+                        <div key={message.id} className="message-item">
+                          <div className="user-avatar">
+                            <FontAwesomeIcon icon={faUser} />
+                          </div>
+                          <div className="message-content">
+                            <div className="user-details">
+                              <div className="user-info">
+                                <span className="username">{message.username}</span>
+                                <span className="user-id">ID {message.userId}</span>
+                              </div>
+                              <span className="timestamp">{message.timestamp}</span>
+                            </div>
+                            <p className="message-text">{message.text}</p>
+                            <button
+                              className="reply-btn"
+                              onClick={() => handleReply(conversation.id, message.id)}
+                            >
+                              REPLY
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                      <button className="view-all-btn">VIEW ALL</button>
                     </div>
-                    <h6 className="mb-0">MASTER BUSINESS</h6>
-                    <div className="images d-flex align-items-center">
-                      <img src={ContactImg} alt="user" />
-                      <img src={ContactImg} alt="user" />
-                      <img src={ContactImg} alt="user" />
-                      <img src={ContactImg} alt="user" />
-                    </div>
-                  </Accordion.Header>
-                  <Accordion.Body>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
-                  </Accordion.Body>
-                </Accordion.Item>
-                <Accordion.Item eventKey="1">
-                  <Accordion.Header>
-                    <div className="icon">
-                      <span>
-                        <FontAwesomeIcon icon={faUser} />
-                      </span>
-                      <span>B2B CONVERSATION</span>
-                    </div>
-                    <div className="notifications">
-                        <FontAwesomeIcon icon={faBell} />
-                        <span>2</span>
-                    </div>
-                    <h6 className="mb-0">MASTER BUSINESS</h6>
-                    <div className="images d-flex align-items-center">
-                      <img src={ContactImg} alt="user" />
-                      <img src={ContactImg} alt="user" />
-                      <img src={ContactImg} alt="user" />
-                      <img src={ContactImg} alt="user" />
-                    </div>
-                  </Accordion.Header>
-                  <Accordion.Body>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

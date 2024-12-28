@@ -1,0 +1,373 @@
+.dashboard-container {
+  padding: 20px;
+  background: #f5f6f8;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+  margin-left: 250px;
+  width: calc(100% - 250px);
+
+  &.dashboard-full {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+
+    h2 {
+      font-size: 24px;
+      color: #333;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .search-container {
+      input {
+        padding: 8px 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        width: 250px;
+        font-size: 14px;
+        outline: none;
+
+        &:focus {
+          border-color: #F26B80;
+          box-shadow: 0 0 0 0.2rem rgba(242, 107, 128, 0.25);
+        }
+      }
+    }
+  }
+
+  .status-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+
+    .status-tab {
+      padding: 8px 20px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      color: #666;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        background: #fef0f2;
+        border-color: #F26B80;
+      }
+
+      &.active {
+        background: #F26B80;
+        color: #fff;
+        border-color: #F26B80;
+      }
+    }
+  }
+
+  .inquiry-list {
+    .inquiry-item {
+      background: white;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      border: 1px solid #ddd;
+
+      .inquiry-header {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        cursor: pointer;
+        gap: 15px;
+
+        &:hover {
+          background: #fef0f2;
+        }
+
+        .user-avatar {
+          width: 40px;
+          height: 40px;
+          background: #fef0f2;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #F26B80;
+        }
+
+        .inquiry-basic-info {
+          flex: 1;
+
+          .name-id {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+
+            h6 {
+              margin: 0;
+              font-size: 14px;
+              font-weight: 600;
+              color: #333;
+            }
+
+            span {
+              font-size: 12px;
+              color: #666;
+              background: #fef0f2;
+              padding: 2px 8px;
+              border-radius: 4px;
+            }
+          }
+
+          .class-info {
+            display: flex;
+            gap: 10px;
+            font-size: 13px;
+            color: #444;
+            margin-bottom: 5px;
+
+            .for {
+              color: #666;
+            }
+          }
+
+          .age-info {
+            display: flex;
+            gap: 10px;
+            font-size: 13px;
+            color: #666;
+
+            span:first-child {
+              font-weight: 500;
+            }
+          }
+        }
+
+        .contact-info {
+          text-align: right;
+          font-size: 13px;
+          color: #666;
+          
+          div {
+            margin-bottom: 3px;
+          }
+        }
+
+        .expand-icon {
+          color: #666;
+          transition: transform 0.2s;
+
+          &.rotated {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+  }
+
+  .schedule-section {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+
+    .calendar-container {
+      flex: 0 0 300px;
+
+      .dashboard-calendar {
+        width: 100%;
+        border: none;
+        border-radius: 8px;
+        padding: 10px;
+        background: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        border: 1px solid #ddd;
+
+        .react-calendar__tile--active {
+          background: #F26B80;
+          color: white;
+        }
+
+        .react-calendar__tile--now {
+          background: #fef0f2;
+          color: #F26B80;
+        }
+
+        .react-calendar__navigation {
+          margin-bottom: 10px;
+        }
+
+        .react-calendar__month-view__weekdays {
+          text-align: center;
+          text-transform: uppercase;
+          font-weight: bold;
+          font-size: 0.75em;
+        }
+      }
+    }
+
+    .schedule-list {
+      flex: 1;
+      background: white;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      border: 1px solid #ddd;
+
+      .schedule-item {
+        display: flex;
+        gap: 15px;
+        padding: 10px;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        background: #f8f9fa;
+        border: 1px solid #eee;
+
+        &:hover {
+          background: #fff;
+          border-color: #F26B80;
+        }
+
+        .time-slot {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          min-width: 120px;
+
+          .instructor-avatar {
+            width: 30px;
+            height: 30px;
+            background: #fef0f2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #F26B80;
+            padding: 8px;
+          }
+
+          span {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+          }
+        }
+
+        .schedule-details {
+          flex: 1;
+
+          .title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 2px;
+          }
+
+          .instructor {
+            font-size: 12px;
+            color: #666;
+
+            .instructor-id {
+              margin-left: 8px;
+              color: #F26B80;
+              background: #fef0f2;
+              padding: 2px 8px;
+              border-radius: 4px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .action-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+
+    .action-btn {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 12px;
+      font-size: 13px;
+      color: #333;
+      text-align: center;
+      transition: all 0.2s;
+
+      &:hover {
+        background: #F26B80;
+        color: #fff;
+        border-color: #F26B80;
+      }
+    }
+  }
+
+  .user-profile-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid #ddd;
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+
+      .profile-avatar {
+        width: 50px;
+        height: 50px;
+        background: #fef0f2;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #F26B80;
+        padding: 15px;
+      }
+
+      .profile-info {
+        h6 {
+          margin: 0;
+          font-size: 16px;
+          font-weight: 600;
+          color: #333;
+        }
+
+        span {
+          font-size: 13px;
+          color: #666;
+          background: #fef0f2;
+          padding: 2px 8px;
+          border-radius: 4px;
+          display: inline-block;
+          margin-top: 5px;
+        }
+      }
+    }
+
+    .profile-contact {
+      font-size: 13px;
+      color: #666;
+      
+      div {
+        margin-bottom: 5px;
+        padding: 5px 0;
+        border-bottom: 1px solid #eee;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

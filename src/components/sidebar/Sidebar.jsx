@@ -46,6 +46,12 @@ const Sidebar = () => {
           </Link>
         </li>
         <li className="nav-item">
+          <Link to="/dashboard" className="nav-link">
+            <div className="icon-placeholder">{"Dashboard".charAt(0)}</div>
+            <span>Dashboard</span>
+          </Link>
+        </li>
+        <li className="nav-item">
           <Link to="/master-account" className="nav-link">
             <div className="icon-placeholder">{"My Account".charAt(0)}</div>
             <span>My Account</span>
@@ -128,6 +134,12 @@ const Sidebar = () => {
                 <Link to="/user-attendance" className="nav-link">
                   <div className="icon-placeholder">{"Staff".charAt(0)}</div>
                   <span>User Attendance</span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/rfid-attendance" className="nav-link">
+                  <div className="icon-placeholder">{"Staff".charAt(0)}</div>
+                  <span>Manage Users Attendance</span>
                 </Link>
               </li>
             </Accordion.Body>
