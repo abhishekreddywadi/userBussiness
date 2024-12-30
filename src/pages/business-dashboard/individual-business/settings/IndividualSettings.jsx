@@ -46,7 +46,7 @@ function IndividualSettings() {
   };
 
   return (
-    <div
+    <div  style={{ overflowX: "auto",boxShadow:"0px 0px 10px rgba(0, 0, 0, 0.1)",padding:"20px",marginTop:"15px" }} 
       className={`dashboard individual-setting ${
         navButtonClick && "dashboard-full"
       }`}

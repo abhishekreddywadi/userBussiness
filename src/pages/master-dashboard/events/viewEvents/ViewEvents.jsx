@@ -96,6 +96,7 @@ function ViewEvents() {
   return (
     <div
       className={`dashboard ${navButtonClick && "dashboard-full"} batch-table`}
+      style={{ boxShadow: "4px 6px 10px rgba(0, 0, 0, 0.1)" ,marginTop:"15px"}}
     >
       <Header />
 

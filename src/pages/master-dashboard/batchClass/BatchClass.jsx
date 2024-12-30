@@ -15,6 +15,7 @@ function BatchClass() {
   
   return (
     <div className={`dashboard ${navButtonClick && "dashboard-full"} batch-table batch-class`}>
+    
       <Header />
       <Tabs
         id="controlled-tab-example"

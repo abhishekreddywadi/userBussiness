@@ -1,3 +1,15 @@
+@mixin for-mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin for-tablet {
+  @media (min-width: 768px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
 .dashboard-container {
   padding: 20px;
   background: #f5f6f8;
@@ -5,6 +17,17 @@
   transition: all 0.3s ease;
   margin-left: 250px;
   width: calc(100% - 250px);
+
+  @include for-mobile {
+    margin-left: 0;
+    width: 100%;
+    padding: 10px;
+  }
+
+  @include for-tablet {
+    margin-left: 0;
+    width: 100%;
+  }
 
   &.dashboard-full {
     margin-left: 0;
@@ -18,11 +41,22 @@
     margin-bottom: 20px;
     padding: 10px 0;
 
+    @include for-mobile {
+      flex-direction: column;
+      gap: 15px;
+      align-items: stretch;
+    }
+
     h2 {
       font-size: 24px;
       color: #333;
       margin: 0;
       font-weight: 600;
+
+      @include for-mobile {
+        font-size: 20px;
+        text-align: center;
+      }
     }
 
     .search-container {
@@ -33,6 +67,10 @@
         width: 250px;
         font-size: 14px;
         outline: none;
+
+        @include for-mobile {
+          width: 100%;
+        }
 
         &:focus {
           border-color: #F26B80;
@@ -45,18 +83,48 @@
   .status-tabs {
     display: flex;
     gap: 10px;
-    margin-bottom: 20px;
     flex-wrap: wrap;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 53.4001vw;
+    justify-content: space-between;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+
+    // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    @include for-mobile {
+      width: 100%;
+      padding: 10px;
+      justify-content: center;
+    }
+
+    @include for-tablet {
+      width: 100%;
+    }
 
     .status-tab {
       padding: 8px 20px;
       background: #fff;
+      width: 150px;
+      text-align: center;
       border: 1px solid #ddd;
       border-radius: 4px;
       font-size: 14px;
       color: #666;
       cursor: pointer;
       transition: all 0.2s;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+      @include for-mobile {
+        padding: 6px 15px;
+        font-size: 12px;
+        flex: 1;
+        text-align: center;
+        min-width: calc(50% - 10px);
+      }
 
       &:hover {
         background: #fef0f2;
@@ -72,100 +140,202 @@
   }
 
   .inquiry-list {
-    .inquiry-item {
-      background: white;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      border: 1px solid #ddd;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #ddd;
+    overflow: hidden;
 
-      .inquiry-header {
+    .inquiry-header-row {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      background: #f8f9fa;
+      border-bottom: 1px solid #ddd;
+      font-weight: 600;
+      color: #666;
+
+      .header-col {
+        &.name-id { width: 25%; }
+        &.interested { width: 25%; }
+        &.for { width: 20%; }
+        &.contact { width: 25%; }
+        &.expand { width: 5%; }
+      }
+
+      @include for-mobile {
+        display: none;
+      }
+    }
+
+    .inquiry-item {
+      border-bottom: 1px solid #eee;
+      transition: all 0.3s ease;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background: #fafafa;
+      }
+
+      .inquiry-row {
         display: flex;
         align-items: center;
         padding: 15px;
         cursor: pointer;
-        gap: 15px;
+        gap: 10px;
 
-        &:hover {
-          background: #fef0f2;
+        @include for-mobile {
+          flex-direction: column;
+          align-items: flex-start;
         }
 
-        .user-avatar {
-          width: 40px;
-          height: 40px;
-          background: #fef0f2;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #F26B80;
-        }
-
-        .inquiry-basic-info {
-          flex: 1;
-
-          .name-id {
+        .inquiry-col {
+          &.name-id { 
+            width: 25%; 
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 5px;
 
-            h6 {
-              margin: 0;
-              font-size: 14px;
-              font-weight: 600;
-              color: #333;
-            }
-
-            span {
-              font-size: 12px;
-              color: #666;
+            .user-avatar {
+              width: 40px;
+              height: 40px;
               background: #fef0f2;
-              padding: 2px 8px;
-              border-radius: 4px;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #F26B80;
+            }
+
+            .name-id-content {
+              h6 {
+                margin: 0;
+                font-size: 14px;
+                font-weight: 600;
+                color: #333;
+              }
+
+              .id-badge {
+                font-size: 12px;
+                color: #666;
+                background: #fef0f2;
+                padding: 2px 8px;
+                border-radius: 4px;
+                display: inline-block;
+                margin-top: 4px;
+              }
             }
           }
+          &.interested { 
+            width: 25%; 
+            .class-info {
+              display: flex;
+              flex-direction: column;
+              gap: 4px;
 
-          .class-info {
+              span {
+                font-size: 13px;
+                color: #444;
+
+                &.for {
+                  color: #666;
+                }
+              }
+            }
+          }
+          &.for { 
+            width: 20%; 
+            .age-info {
+              display: flex;
+              flex-direction: column;
+              gap: 4px;
+              
+              span {
+                font-size: 13px;
+                &:first-child {
+                  color: #666;
+                }
+                &:last-child {
+                  color: #333;
+                  font-weight: 500;
+                }
+              }
+            }
+          }
+          &.contact { 
+            width: 25%; 
+            .contact-info {
+              div {
+                font-size: 13px;
+                color: #666;
+                margin-bottom: 4px;
+
+                &:last-child {
+                  margin-bottom: 0;
+                }
+              }
+            }
+          }
+          &.expand { 
+            width: 5%; 
             display: flex;
-            gap: 10px;
-            font-size: 13px;
-            color: #444;
-            margin-bottom: 5px;
-
-            .for {
+            justify-content: center;
+            
+            .expand-icon {
               color: #666;
+              transition: transform 0.2s;
+
+              &.rotated {
+                transform: rotate(180deg);
+              }
             }
           }
 
-          .age-info {
-            display: flex;
+          @include for-mobile {
+            width: 100% !important;
+            margin-bottom: 10px;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+
+      .inquiry-details {
+        padding: 15px;
+        background: #f8f9fa;
+        border-top: 1px solid #eee;
+
+        .detail-row {
+          display: flex;
+          gap: 20px;
+
+          @include for-mobile {
+            flex-direction: column;
             gap: 10px;
-            font-size: 13px;
-            color: #666;
+          }
 
-            span:first-child {
-              font-weight: 500;
+          .detail-label {
+            font-weight: 600;
+            color: #333;
+            width: 150px;
+          }
+
+          .detail-content {
+            flex: 1;
+            p {
+              margin: 0 0 8px;
+              font-size: 13px;
+              color: #666;
+
+              &:last-child {
+                margin-bottom: 0;
+              }
             }
-          }
-        }
-
-        .contact-info {
-          text-align: right;
-          font-size: 13px;
-          color: #666;
-          
-          div {
-            margin-bottom: 3px;
-          }
-        }
-
-        .expand-icon {
-          color: #666;
-          transition: transform 0.2s;
-
-          &.rotated {
-            transform: rotate(180deg);
           }
         }
       }
@@ -177,14 +347,45 @@
     display: flex;
     gap: 20px;
 
+    @include for-mobile {
+      flex-direction: column;
+    }
+
+    .date-header {
+      padding: 20px;
+      background: white;
+      border-radius: 8px 8px 0 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      border: 1px solid #ddd;
+      border-bottom: none;
+
+      h2 {
+        font-size: 32px;
+        font-weight: 600;
+        margin: 0;
+        line-height: 1;
+      }
+
+      span {
+        font-size: 14px;
+        color: #666;
+      }
+    }
+
     .calendar-container {
       flex: 0 0 300px;
+
+      @include for-mobile {
+        flex: none;
+        width: 100%;
+      }
 
       .dashboard-calendar {
         width: 100%;
         border: none;
-        border-radius: 8px;
-        padding: 10px;
+        border-radius: 0 0 8px 8px;
+        padding: 15px;
         background: white;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         border: 1px solid #ddd;
@@ -192,95 +393,118 @@
         .react-calendar__tile--active {
           background: #F26B80;
           color: white;
+          border-radius: 50%;
         }
 
         .react-calendar__tile--now {
           background: #fef0f2;
           color: #F26B80;
+          border-radius: 50%;
         }
 
         .react-calendar__navigation {
-          margin-bottom: 10px;
+          margin-bottom: 15px;
         }
 
         .react-calendar__month-view__weekdays {
           text-align: center;
           text-transform: uppercase;
-          font-weight: bold;
-          font-size: 0.75em;
+          font-weight: 500;
+          font-size: 12px;
+          margin-bottom: 10px;
+        }
+
+        .react-calendar__tile {
+          padding: 10px;
+          font-size: 14px;
+          
+          &:enabled:hover {
+            background: #fef0f2;
+            border-radius: 50%;
+          }
         }
       }
     }
 
     .schedule-list {
       flex: 1;
-      background: white;
-      border-radius: 8px;
-      padding: 15px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      border: 1px solid #ddd;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
 
       .schedule-item {
         display: flex;
+        align-items: center;
         gap: 15px;
-        padding: 10px;
-        border-radius: 6px;
-        margin-bottom: 10px;
+        padding: 15px;
         background: #f8f9fa;
-        border: 1px solid #eee;
+        border-radius: 8px;
+        transition: all 0.2s;
 
-        &:hover {
-          background: #fff;
-          border-color: #F26B80;
-        }
-
-        .time-slot {
+        .schedule-avatar {
+          width: 40px;
+          height: 40px;
+          background: #fef0f2;
+          border-radius: 50%;
           display: flex;
           align-items: center;
-          gap: 10px;
-          min-width: 120px;
-
-          .instructor-avatar {
-            width: 30px;
-            height: 30px;
-            background: #fef0f2;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #F26B80;
-            padding: 8px;
-          }
-
-          span {
-            font-size: 14px;
-            font-weight: 500;
-            color: #333;
-          }
+          justify-content: center;
+          color: #F26B80;
         }
 
-        .schedule-details {
+        .schedule-content {
           flex: 1;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
 
-          .title {
-            font-size: 14px;
-            font-weight: 500;
-            color: #333;
-            margin-bottom: 2px;
+          @include for-mobile {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
           }
 
-          .instructor {
-            font-size: 12px;
-            color: #666;
+          .time-title {
+            display: flex;
+            gap: 10px;
+            align-items: center;
 
-            .instructor-id {
-              margin-left: 8px;
-              color: #F26B80;
+            .time {
+              font-size: 14px;
+              font-weight: 500;
+              color: #333;
+              min-width: 70px;
+            }
+
+            .title {
+              font-size: 14px;
+              color: #666;
+            }
+          }
+
+          .instructor-id {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+
+            .instructor {
+              font-size: 14px;
+              color: #666;
+            }
+
+            .id {
+              font-size: 12px;
+              color: #666;
               background: #fef0f2;
               padding: 2px 8px;
               border-radius: 4px;
             }
           }
+        }
+
+        &:hover {
+          background: white;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
       }
     }
@@ -291,6 +515,10 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     margin-bottom: 30px;
+
+    @include for-mobile {
+      grid-template-columns: 1fr;
+    }
 
     .action-btn {
       background: white;
@@ -312,13 +540,21 @@
 
   .user-profile-card {
     background: white;
-    border-radius: 8px;
+    border-radius: 34px;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     border: 1px solid #ddd;
+    height: 70vh;
+
+    @include for-mobile {
+      height: auto;
+      min-height: 300px;
+      border-radius: 20px;
+    }
 
     .profile-header {
       display: flex;
+      flex-direction: column;
       align-items: center;
       gap: 15px;
       margin-bottom: 15px;
@@ -336,15 +572,22 @@
       }
 
       .profile-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center
         h6 {
           margin: 0;
           font-size: 16px;
           font-weight: 600;
           color: #333;
+          text-align: center;
+        
         }
 
         span {
           font-size: 13px;
+          text-align: center;
+          align-self: center;
           color: #666;
           background: #fef0f2;
           padding: 2px 8px;

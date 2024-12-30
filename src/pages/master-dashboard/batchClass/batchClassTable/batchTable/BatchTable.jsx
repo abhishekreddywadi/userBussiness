@@ -75,7 +75,7 @@ function BatchTable() {
     },
   ];
   return (
-    <div>
+    <div  style={{ overflowX: "auto",boxShadow:"0px 0px 10px rgba(0, 0, 0, 0.1)",padding:"20px",marginTop:"15px" }}  >
       {!showBatchTabs && (
         <>
           <div className="batch-head d-flex flex-wrap justify-content-center justify-content-md-between align-items-center gap-4 my-4">

@@ -146,7 +146,7 @@ const Dashboard = () => {
           {["Inquiry", "Request", "Free pending", "New user"].map((tab) => (
             <button
               key={tab}
-              className={`status-tab ${activeTab === tab ? 'active' : ''}`}
+              className={`status-tab ${activeTab === tab ? "active" : ""}`}
               onClick={() => setActiveTab(tab)}
             >
               {tab}
@@ -157,60 +157,97 @@ const Dashboard = () => {
         <Row>
           <Col lg={8}>
             <div className="inquiry-list">
+              <div className="inquiry-header-row">
+                <div className="header-col name-id">NAME /ID</div>
+                <div className="header-col interested">Interested</div>
+                <div className="header-col for">FOR</div>
+                <div className="header-col contact">Contact</div>
+                <div className="header-col expand"></div>
+              </div>
               {filterInquiries().map((inquiry) => (
                 <div key={inquiry.id} className="inquiry-item">
-                  <div className="inquiry-header" onClick={() => toggleInquiry(inquiry.id)}>
-                    <div className="user-avatar">
-                      <FontAwesomeIcon icon={faUser} />
-                    </div>
-                    <div className="inquiry-basic-info">
-                      <div className="name-id">
-                        <h6>{inquiry.name}</h6>
-                        <span>{inquiry.userId}</span>
+                  <div className="inquiry-row" onClick={() => toggleInquiry(inquiry.id)}>
+                    <div className="inquiry-col name-id">
+                      <div className="user-avatar">
+                        <FontAwesomeIcon icon={faUser} />
                       </div>
+                      <div className="name-id-content">
+                        <h6>{inquiry.name}</h6>
+                        <span className="id-badge">{inquiry.userId}</span>
+                      </div>
+                    </div>
+                    <div className="inquiry-col interested">
                       <div className="class-info">
                         <span>{inquiry.class}</span>
                         <span className="for">FOR {inquiry.for}</span>
                       </div>
+                    </div>
+                    <div className="inquiry-col for">
                       <div className="age-info">
                         <span>AGE</span>
                         <span>{inquiry.age}</span>
                       </div>
                     </div>
-                    <div className="contact-info">
-                      <div>{inquiry.contact}</div>
-                      <div>{inquiry.email}</div>
+                    <div className="inquiry-col contact">
+                      <div className="contact-info">
+                        <div>{inquiry.contact}</div>
+                        <div>{inquiry.email}</div>
+                      </div>
                     </div>
-                    <FontAwesomeIcon 
-                      icon={faChevronDown} 
-                      className={`expand-icon ${expandedInquiry === inquiry.id ? 'rotated' : ''}`}
-                    />
+                    <div className="inquiry-col expand">
+                      <FontAwesomeIcon 
+                        icon={faChevronDown} 
+                        className={`expand-icon ${expandedInquiry === inquiry.id ? 'rotated' : ''}`}
+                      />
+                    </div>
                   </div>
+                  {expandedInquiry === inquiry.id && (
+                    <div className="inquiry-details">
+                      <div className="detail-row">
+                        <div className="detail-label">Additional Information:</div>
+                        <div className="detail-content">
+                          <p>Class Schedule: Monday, Wednesday, Friday</p>
+                          <p>Preferred Time: Evening</p>
+                          <p>Notes: Beginner level dance class</p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
 
             <div className="schedule-section">
               <div className="calendar-container">
+                <div className="date-header">
+                  <h2>28</h2>
+                  <span>DEC 2025</span>
+                </div>
                 <Calendar
                   onChange={handleDateChange}
                   value={date}
                   className="dashboard-calendar"
                 />
               </div>
-              <div className="schedule-list">
+              <div className="schedule-list" style={{ overflow: "auto", height: "fit-content", padding: "20px",backgroundColor: "white",boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)" }}>
+                <div className="date-header">
+                  <h2>28</h2>
+                  <span>DEC 2025</span>
+                </div>
                 {scheduleData.map((schedule, index) => (
                   <div key={index} className="schedule-item">
-                    <div className="time-slot">
-                      <FontAwesomeIcon icon={faUser} className="instructor-avatar" />
-                      <span>{schedule.time}</span>
+                    <div className="schedule-avatar">
+                      <FontAwesomeIcon icon={faUser} />
                     </div>
-                    <div className="schedule-details">
-                      <div className="title">{schedule.title}</div>
+                    <div className="schedule-content">
+                      <div className="time-title">
+                        <span className="time">{schedule.time}</span>
+                        <span className="title">{schedule.title}</span>
+                      </div>
                       {schedule.instructor && (
-                        <div className="instructor">
-                          {schedule.instructor}
-                          <span className="instructor-id">{schedule.instructorId}</span>
+                        <div className="instructor-id">
+                          <span className="instructor">{schedule.instructor}</span>
+                          <span className="id">{schedule.instructorId}</span>
                         </div>
                       )}
                     </div>
@@ -221,6 +258,9 @@ const Dashboard = () => {
           </Col>
 
           <Col lg={4}>
+          <div style={{ padding: "20px",height: "fit-content",backgroundColor: "#F26B80",position: "relative",bottom:"77px" }}  >
+            
+          
             <div className="action-buttons">
               <Button className="action-btn">ADD USER</Button>
               <Button className="action-btn">User verification</Button>
@@ -235,13 +275,14 @@ const Dashboard = () => {
                 <FontAwesomeIcon icon={faUser} className="profile-avatar" />
                 <div className="profile-info">
                   <h6>RAKESH KOTHIA</h6>
-                  <span>ID/NILL</span>
+                  <span  style={{textAlign: "center"}}  >ID/NILL</span>
                 </div>
               </div>
               <div className="profile-contact">
                 <div>+917778889999</div>
                 <div>RAHUL@GMAIL.COM</div>
               </div>
+            </div>
             </div>
           </Col>
         </Row>

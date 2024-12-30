@@ -75,12 +75,7 @@ const Sidebar = () => {
             <span>Batch/Class</span>
           </Link>
         </li>
-        <li className="nav-item">
-          <Link to="/make-payment" className="nav-link">
-            <div className="icon-placeholder">{"Make Payment".charAt(0)}</div>
-            <span>Make Payment</span>
-          </Link>
-        </li>
+       
         <Accordion className="d-flex flex-column mb-auto gap-2">
           <Accordion.Item eventKey="1-1">
             <Accordion.Header>
@@ -116,7 +111,29 @@ const Sidebar = () => {
               </li>
             </Accordion.Body>
           </Accordion.Item>
-          <Accordion.Item eventKey="1-2">
+          <Accordion.Item eventKey="4">
+            <Accordion.Header>
+              <li className="nav-item">
+                <div className="icon-placeholder">{"Manage".charAt(0)}</div>
+                <span>Make Payment</span>
+              </li>
+            </Accordion.Header>
+            <Accordion.Body>
+              <li className="nav-item">
+                <Link to="/make-payment" className="nav-link">
+                  <div className="icon-placeholder">{"Make".charAt(0)}</div>
+                  <span>Make Payment</span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/master-account" className="nav-link">
+                  <div className="icon-placeholder">{"View".charAt(0)}</div>
+                  <span>Manage User Payment</span>
+                </Link>
+              </li>
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="5">
             <Accordion.Header>
               <li className="nav-item">
                 <div className="icon-placeholder">{"Manage".charAt(0)}</div>
