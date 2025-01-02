@@ -6,50 +6,50 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 import "./makePayment.scss";
 
-function MakePayment() {
+const membershipData = [
+  {
+    id: 1,
+    planName: "Hip Hop",
+    planTime: "5pm to 6pm",
+    planTypeDuration: "Monthly",
+    planPrice: 2000,
+    planType: "Dance",
+    planDuration: "5th Jan to 4th Feb",
+  },
+  {
+    id: 2,
+    planName: "Hip Hop",
+    planTime: "5pm to 6pm",
+    planTypeDuration: "Monthly",
+    planPrice: 2000,
+    planType: "Dance",
+    planDuration: "5th Jan to 4th Feb",
+  },
+  {
+    id: 3,
+    planName: "Hip Hop",
+    planTime: "5pm to 6pm",
+    planTypeDuration: "Monthly",
+    planPrice: 2000,
+    planType: "Dance",
+    planDuration: "5th Jan to 4th Feb",
+  },
+  {
+    id: 4,
+    planName: "Hip Hop",
+    planTime: "5pm to 6pm",
+    planTypeDuration: "Monthly",
+    planPrice: 2000,
+    planType: "Dance",
+    planDuration: "5th Jan to 4th Feb",
+  },
+];
+
+const MakePayment = () => {
   const { navButtonClick } = useContext(UserContext);
   const [haveMasterId, setHaveMasterId] = useState(false);
   const [otherMember, setOtherMember] = useState(false);
   const [selectedPlans, setSelectedPlans] = useState([]);
-
-  const membershipData = [
-    {
-      id: 1,
-      planName: "Hip Hop",
-      planTime: "5pm to 6pm",
-      planTypeDuration: "Monthly",
-      planPrice: 2000,
-      planType: "Dance",
-      planDuration: "5th Jan to 4th Feb",
-    },
-    {
-      id: 2,
-      planName: "Hip Hop",
-      planTime: "5pm to 6pm",
-      planTypeDuration: "Monthly",
-      planPrice: 2000,
-      planType: "Dance",
-      planDuration: "5th Jan to 4th Feb",
-    },
-    {
-      id: 3,
-      planName: "Hip Hop",
-      planTime: "5pm to 6pm",
-      planTypeDuration: "Monthly",
-      planPrice: 2000,
-      planType: "Dance",
-      planDuration: "5th Jan to 4th Feb",
-    },
-    {
-      id: 4,
-      planName: "Hip Hop",
-      planTime: "5pm to 6pm",
-      planTypeDuration: "Monthly",
-      planPrice: 2000,
-      planType: "Dance",
-      planDuration: "5th Jan to 4th Feb",
-    },
-  ];
 
   const handleRenewClick = (planName) => {
     setSelectedPlans((prevPlans) => [...prevPlans, planName]);
@@ -83,7 +83,7 @@ function MakePayment() {
                     type="checkbox"
                     name="other"
                     id="other"
-                    value={otherMember}
+                    checked={otherMember}
                     onChange={() => setOtherMember(!otherMember)}
                   />
                   <label className="pb-0" htmlFor="other">
@@ -99,7 +99,7 @@ function MakePayment() {
                     name="have_master_id"
                     id="have_master_id"
                     checked={haveMasterId}
-                    onChange={(e) => setHaveMasterId(!haveMasterId)}
+                    onChange={() => setHaveMasterId(!haveMasterId)}
                   />
                   <label className="pb-0" htmlFor="have_master_id">
                     Do you have Master ID?
@@ -117,11 +117,11 @@ function MakePayment() {
                 <div className="input-container">
                   <label>Select User/Staff</label>
                   <select className="w-100">
-                    <option value="select" default disabled>
+                    <option value="select" disabled>
                       Select User/Staff
                     </option>
-                    <option value="">Raghav Jain/Music Teacher</option>
-                    <option value="">Anubhav/Dancer</option>
+                    <option value="raghav">Raghav Jain/Music Teacher</option>
+                    <option value="anubhav">Anubhav/Dancer</option>
                   </select>
                 </div>
               </div>
@@ -131,7 +131,7 @@ function MakePayment() {
                   <div className="input-container">
                     <div className="d-flex align-items-center justify-content-between mb-1 mt-2">
                       <label className="mb-0">User Master ID</label>
-                      <button className="btn btn-primary verify py-1">
+                      <button type="button" className="btn btn-primary verify py-1">
                         Verify
                       </button>
                     </div>
@@ -173,39 +173,54 @@ function MakePayment() {
               <div className="col-12 py-2 col-md-6">
                 <p>His Membership with you</p>
                 <ul className="membership-data-list d-flex flex-column gap-4 gap-md-2">
-                  {membershipData?.map((memberData, i) => {
-                    return (
-                      <li
-                        key={i}
-                        className="d-flex flex-column flex-md-row align-items-center gap-3"
-                      >
-                        <div className="membership-data">
-                          <div>
-                            <p className="mb-0">{memberData.planName}</p>
-                            <span>
-                              {memberData.planTypeDuration}:{" "}
-                              {memberData.planPrice}
-                            </span>
-                          </div>
-                          <div>
-                            <p className="mb-0">Type</p>
-                            <span>{memberData.planType}</span>
-                          </div>
-                          <div>
-                            <p className="text-danger mb-0">5 Days Left</p>
-                            <span>{memberData.planDuration}</span>
-                          </div>
+                  {membershipData.map((memberData) => (
+                    <li
+                      key={memberData.id}
+                      className="d-flex flex-column flex-md-row align-items-center gap-3"
+                    >
+                      <div className="membership-data">
+                        <div>
+                          <p className="mb-0">{memberData.planName}</p>
+                          <span>
+                            {memberData.planTypeDuration}: {memberData.planPrice}
+                          </span>
                         </div>
-                        <button
-                          type="button"
-                          className="button mx-auto mx-md-0 mt-1 mt-md-0"
-                          onClick={() => handleRenewClick(memberData.planName)}
-                        >
-                          Renew
-                        </button>
-                      </li>
-                    );
-                  })}
+                        <div>
+                          <p className="mb-0">Type</p>
+                          <span>{memberData.planType}</span>
+                        </div>
+                        <div>
+                          <p className="text-danger mb-0">5 Days Left</p>
+                          <span>{memberData.planDuration}</span>
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        className={`button mx-auto mx-md-0 mt-1 mt-md-0 ${
+                          selectedPlans.includes(memberData.planName)
+                            ? "selected"
+                            : ""
+                        }`}
+                        onClick={() =>
+                          selectedPlans.includes(memberData.planName)
+                            ? handleRemoveClick(memberData.planName)
+                            : handleRenewClick(memberData.planName)
+                        }
+                      >
+                        {selectedPlans.includes(memberData.planName) ? (
+                          <>
+                            <FontAwesomeIcon icon={faTrash} />
+                            Remove
+                          </>
+                        ) : (
+                          <>
+                            <FontAwesomeIcon icon={faCheck} />
+                            Renew
+                          </>
+                        )}
+                      </button>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
@@ -322,7 +337,7 @@ function MakePayment() {
                 <div className="input-container">
                   <label>Payment Mode</label>
                   <select name="" id="">
-                    <option value="select" default disabled>
+                    <option value="select" disabled>
                       Select Mode
                     </option>
                     <option value="">GPay</option>
@@ -361,6 +376,6 @@ function MakePayment() {
       </div>
     </div>
   );
-}
+};
 
 export default MakePayment;

@@ -1,17 +1,17 @@
 import React, { useState, useContext, useEffect } from "react";
 import UserContext from "../../../context/UserContext";
 import Header from "../../../components/header/Header";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Container } from "react-bootstrap";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import "./masterAccount.scss";
 import Accordion from "react-bootstrap/Accordion";
 import AddPaymentModal from "./addPaymentModal/AddPaymentModal";
 import MasterStaff from "./masterStaff/MasterStaff";
 import MasterUser from "./masterUser/MasterUser";
+import Loader from "../../../components/loader/Loader";
 
 import PlanImg from "../../../assets/shree-ganesh.png";
 import bruceMars from "../../../assets/shree-ganesh.png";
@@ -21,8 +21,8 @@ import QR from "../../../assets/qr.svg";
 import UPIImg from "../../../assets/upi.jpg";
 import PolicyImg from "../../../assets/policy.png";
 import License from "../../../assets/license.png";
-import { Link } from "react-router-dom";
-import Loader from "../../../components/loader/Loader";
+
+import "./masterAccount.scss";
 
 const planData = [
   {
@@ -61,21 +61,16 @@ const planData = [
   },
 ];
 
-function MasterAccount() {
+const MasterAccount = () => {
   const { navButtonClick } = useContext(UserContext);
+  const location = useLocation();
+  
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [showActivePayemnt, setShowActivePayemnt] = useState(false);
   const [showOrderData, setShowOrderData] = useState(false);
   const [isLoadingOne, setIsLoadingOne] = useState(false);
   const [isLoadingTwo, setIsLoadingTwo] = useState(false);
   const [isLoadingThree, setIsLoadingThree] = useState(false);
-
-  const handleShowActivePayment = () => {
-    setShowActivePayemnt(true);
-    setShowPaymentModal(false);
-  };
-  const location = useLocation();
-
   const [activeKey, setActiveKey] = useState(
     location.pathname.includes("/view-staff")
       ? "staff"
@@ -83,6 +78,12 @@ function MasterAccount() {
       ? "info"
       : "student"
   );
+
+  const handleShowActivePayment = () => {
+    setShowActivePayemnt(true);
+    setShowPaymentModal(false);
+  };
+
   useEffect(() => {
     if (location.pathname.includes("/view-staff")) {
       setActiveKey("staff");
@@ -104,9 +105,7 @@ function MasterAccount() {
 
   return (
     <div
-      className={`dashboard ${
-        navButtonClick && "dashboard-full"
-      } master-account`}
+      className={`dashboard ${navButtonClick && "dashboard-full"} master-account`}
     >
       <Container>
         <Header />
@@ -151,11 +150,10 @@ function MasterAccount() {
               >
                 <Tab eventKey="info" title="Plan">
                   <div className="row text-center">
-                    <div className="row mt-4 gx-4" >
-                      {planData.map((data , i) => {
-                        return (
-                          <div className="col-12 col-md-4" key={i}>
-                            <div className="plan-card-box" style={{ 
+                    <div className="row mt-4 gx-4">
+                      {planData.map((data, i) => (
+                        <div className="col-12 col-md-4" key={i}>
+                          <div className="plan-card-box" style={{ 
                               cursor: "pointer",
                               marginBottom: "15px", 
                               border: "1px solid #e5e5e5",
@@ -165,32 +163,31 @@ function MasterAccount() {
                               padding: "10px",
                               margin: "0 auto"
                             }}>
-                              <div className="plan-card" key={data.key}>
-                                <img src={data.img} alt="plan-img" style={{maxWidth: "60px", height: "auto", marginBottom: "5px"}} />
-                                <h5 className="mt-1" style={{fontSize: "1rem", marginBottom: "5px"}}>{data.planName}</h5>
-                                <h3 className={data.discountedPrice && "discounted"} style={{fontSize: "1.3rem", margin: "3px 0"}}>
-                                  Rs. {data.planAmount}
-                                </h3>
-                                <h6 style={{color: "#666", fontSize: "0.9rem", margin: "2px 0"}}>
-                                  {data.discountedPrice && `${"Rs." + data.discountedPrice}`}
-                                </h6>
-                                <span style={{display: "block", margin: "5px 0", color: "#888", fontSize: "0.85rem"}}>{data.planDuration}</span>
-                                <p style={{fontSize: "0.85rem", margin: "5px 0", lineHeight: "1.2"}}>{data.planDesc}</p>
-                                <div className="buttons">
-                                  <button type="button" style={{
-                                    padding: "6px 15px",
-                                    borderRadius: "5px",
-                                    border: "none",
-                                    backgroundColor: "#f26b80",
-                                    color: "white",
-                                    fontSize: "0.85rem"
-                                  }}>Add to Member</button>
-                                </div>
+                            <div className="plan-card" key={data.key}>
+                              <img src={data.img} alt="plan-img" style={{maxWidth: "60px", height: "auto", marginBottom: "5px"}} />
+                              <h5 className="mt-1" style={{fontSize: "1rem", marginBottom: "5px"}}>{data.planName}</h5>
+                              <h3 className={data.discountedPrice && "discounted"} style={{fontSize: "1.3rem", margin: "3px 0"}}>
+                                Rs. {data.planAmount}
+                              </h3>
+                              <h6 style={{color: "#666", fontSize: "0.9rem", margin: "2px 0"}}>
+                                {data.discountedPrice && `${"Rs." + data.discountedPrice}`}
+                              </h6>
+                              <span style={{display: "block", margin: "5px 0", color: "#888", fontSize: "0.85rem"}}>{data.planDuration}</span>
+                              <p style={{fontSize: "0.85rem", margin: "5px 0", lineHeight: "1.2"}}>{data.planDesc}</p>
+                              <div className="buttons">
+                                <button type="button" style={{
+                                  padding: "6px 15px",
+                                  borderRadius: "5px",
+                                  border: "none",
+                                  backgroundColor: "#f26b80",
+                                  color: "white",
+                                  fontSize: "0.85rem"
+                                }}>Add to Member</button>
                               </div>
                             </div>
                           </div>
-                        );
-                      })}
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </Tab>
@@ -521,15 +518,16 @@ function MasterAccount() {
           </div>
         </div>
       </Container>
+      
       {showPaymentModal && (
         <AddPaymentModal
-          showPaymentModal={showPaymentModal}
-          handleClosePaymentModal={() => setShowPaymentModal(false)}
+          show={showPaymentModal}
+          onHide={() => setShowPaymentModal(false)}
           handleShowActivePayment={handleShowActivePayment}
         />
       )}
     </div>
   );
-}
+};
 
 export default MasterAccount;

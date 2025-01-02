@@ -10,14 +10,14 @@ import Zumba from "../../../../assets/zumba.jpg";
 import Yoga from "../../../../assets/yoga.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faEye, faTrash } from "@fortawesome/free-solid-svg-icons";
-// import BatchClass from "../BatchClass";
 import ManageEvents from "../manageEvents/ManageEvent";
 
 import "./viewEvents.scss";
 
-function ViewEvents() {
+const ViewEvents = () => {
   const { navButtonClick } = useContext(UserContext);
   const [showBatchTabs, setShowBatchTabs] = useState(false);
+  
   const batchClassTableData = [
     {
       name: "Dance Demo Batch",
@@ -35,7 +35,6 @@ function ViewEvents() {
           instructorImg: InstructorImg,
         },
       ],
-
       className: "Yoga",
       classImg: Yoga,
     },
@@ -63,7 +62,6 @@ function ViewEvents() {
           instructorImg: UserThreeImg,
         },
       ],
-
       className: "Kathak",
       classImg: Kathak,
     },
@@ -87,7 +85,6 @@ function ViewEvents() {
           instructorImg: UserThreeImg,
         },
       ],
-
       className: "Zumba",
       classImg: Zumba,
     },
@@ -96,11 +93,11 @@ function ViewEvents() {
   return (
     <div
       className={`dashboard ${navButtonClick && "dashboard-full"} batch-table`}
-      style={{ boxShadow: "4px 6px 10px rgba(0, 0, 0, 0.1)" ,marginTop:"15px"}}
+      style={{ boxShadow: "4px 6px 10px rgba(0, 0, 0, 0.1)", marginTop: "15px" }}
     >
       <Header />
 
-      {!showBatchTabs && (
+      {!showBatchTabs ? (
         <>
           <div className="batch-head d-flex flex-wrap justify-content-center justify-content-md-between align-items-center gap-4 my-4">
             <h2>View Event</h2>
@@ -127,59 +124,59 @@ function ViewEvents() {
               </tr>
             </thead>
             <tbody>
-              {batchClassTableData.map((batch, i) => {
-                return (
-                  <tr key={i}>
-                    <td>{i + 1}</td>
-                    <td>
-                      <div className="batch-user">
-                        <img src={batch.userImg} alt="user-img" />
-                        <span>{batch.name}</span>
-                      </div>
-                    </td>
-                    <td>{batch.startTime}</td>
-                    <td>{batch.endTime}</td>
-                    <td>{batch.tickets}/{batch.totalTickets}</td>
-                    <td>{batch.maxStudents}</td>
-                    <td>{batch.price}</td>
-                    <td>
-                        {batch.archive ? (
-                            <button type="button" className="btn btn-danger">
-                            Archive
-                          </button>
-                        ) : ""}
-                      
-                    </td>
-                    <td>
-                      <div className="icons">
-                        <button type="button">
-                          <FontAwesomeIcon icon={faEdit} />
-                        </button>
-                        <button type="button">
-                          <FontAwesomeIcon icon={faEye} />
-                        </button>
-                        <button type="button">
-                          <FontAwesomeIcon icon={faTrash} />
-                        </button>
-                      </div>
-                    </td>
-                    <table></table>
-                  </tr>
-                );
-              })}
+              {batchClassTableData.map((batch, i) => (
+                <tr key={i}>
+                  <td>{i + 1}</td>
+                  <td>
+                    <div className="batch-user">
+                      <img src={batch.userImg} alt="user-img" />
+                      <span>{batch.name}</span>
+                    </div>
+                  </td>
+                  <td>{batch.startTime}</td>
+                  <td>{batch.endTime}</td>
+                  <td>{batch.tickets}/{batch.totalTickets}</td>
+                  <td>{batch.maxStudents}</td>
+                  <td>{batch.price}</td>
+                  <td>
+                    {batch.archive && (
+                      <button type="button" className="btn btn-danger">
+                        Archive
+                      </button>
+                    )}
+                  </td>
+                  <td>
+                    <div className="icons">
+                      <button type="button">
+                        <FontAwesomeIcon icon={faEdit} />
+                      </button>
+                      <button type="button">
+                        <FontAwesomeIcon icon={faEye} />
+                      </button>
+                      <button type="button">
+                        <FontAwesomeIcon icon={faTrash} />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </>
-      )}
-
-      {showBatchTabs && (
+      ) : (
         <>
-        <button type="button" className="btn text-start w-fit" onClick={() => setShowBatchTabs(false)}>Back</button>
-        <ManageEvents />
+          <button 
+            type="button" 
+            className="btn text-start w-fit" 
+            onClick={() => setShowBatchTabs(false)}
+          >
+            Back
+          </button>
+          <ManageEvents />
         </>
       )}
     </div>
   );
-}
+};
 
 export default ViewEvents;

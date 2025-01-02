@@ -229,6 +229,45 @@ const Sidebar = () => {
               </li>
             </Accordion.Body>
           </Accordion.Item>
+          <Accordion.Item eventKey="1-6">
+            <Accordion.Header>
+              <li className="nav-item">
+                <div className="icon-placeholder">{"Courses".charAt(0)}</div>
+                <span>Kios</span>
+              </li>
+            </Accordion.Header>
+            <Accordion.Body>
+              <li className="nav-item">
+                <Link to="/view-kios" className="nav-link">
+                  <div className="icon-placeholder">{"View".charAt(0)}</div>
+                  <span>View All Kios</span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/manage-kios" className="nav-link">
+                  <div className="icon-placeholder">{"Manage".charAt(0)}</div>
+                  <span>Manage Kios</span>
+                </Link>
+              </li>
+                            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="1-7">
+            <Accordion.Header>
+              <li className="nav-item">
+                <div className="icon-placeholder">{"Courses".charAt(0)}</div>
+                <span>Apartment</span>
+              </li>
+            </Accordion.Header>
+            <Accordion.Body>
+              <li className="nav-item">
+                <Link to="/apartment" className="nav-link">
+                  <div className="icon-placeholder">{"View".charAt(0)}</div>
+                  <span>View Apartment</span>
+                </Link>
+              </li>
+              
+            </Accordion.Body>
+          </Accordion.Item>
         </Accordion>
       </ul>
     </div>

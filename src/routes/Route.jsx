@@ -20,6 +20,9 @@ import ManageCourse from "../pages/master-dashboard/courses/manageCourse/ManageC
 import ViewCourse from "../pages/master-dashboard/courses/viewCourse/ViewCourse";
 import ManageUsersAttendance from "../pages/master-dashboard/manage-user/manage-users-Attendance/rfIdAttendance/ManageusersAttendance";
 import Dashboard from "../pages/master-dashboard/dashboard/Dashboard";
+import UserDetails from "../pages/master-dashboard/profile/businesProfileDetails/UserDetails";
+import ManageKios from '../pages/master-dashboard/kios/manageKios/ManageKios';
+import Apartment from "../pages/master-dashboard/apartments/Apartment.jsx";
 
 const Routing = () => {
   return (
@@ -40,6 +43,9 @@ const Routing = () => {
         <Route path="/staff-attendance" element={<StaffAttendance />} />
         <Route path="/user-attendance" element={<UserAttendance />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/user-profile" element={<UserDetails />} />
+        <Route path="/manage-kios" element={<ManageKios />} />
+        <Route path = "/apartment" element = {<Apartment />} />
 
         <Route path="/rfid-attendance" element={<ManageUsersAttendance />} />
         <Route path="/add-user" element={<AddUser />} />
