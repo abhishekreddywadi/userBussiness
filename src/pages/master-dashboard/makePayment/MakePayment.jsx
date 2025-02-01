@@ -429,7 +429,7 @@ const MakePayment = () => {
                     )}
                   </div>
 
-                  <div className="col-12 py-2 col-md-6">
+                  <div className="col-12 py-2 col-md-6   "  >
                     <div className="payment-profile d-flex flex-column flex-md-row gap-3 align-items-center">
                       <div className="profile-img d-flex flex-column align-items-center justify-content-center gap-2">
                         <img src={staffData[selectedStaff].image} alt="user-img" />
