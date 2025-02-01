@@ -1,8 +1,8 @@
 import React from 'react'
 
-function PlanCard({key, img, planName, discountedPrice, planAmount, planDuration, planDesc}) {
+function PlanCard({ img, planName, discountedPrice, planAmount, planDuration, planDesc }) {
   return (
-    <div className='plan-card' key={key}>
+    <div className='plan-card'>
       <img src={img} alt='plan-img' />
       <h5 className='mt-2'>{planName}</h5>
       <h3 className={discountedPrice && 'discounted'}>Rs. {planAmount}</h3>

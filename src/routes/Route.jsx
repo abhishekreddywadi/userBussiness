@@ -8,6 +8,7 @@ import MasterAccount from "../pages/master-dashboard/account/MasterAccount";
 import StaffAttendance from "../pages/master-dashboard/manage-staff/staff-attendance/StaffAttendance";
 import MasterPlan from "../pages/master-dashboard/plan/Plan";
 import AddPlan from "../pages/master-dashboard/plan/addPlan/AddPlan";
+import AddPackage from "../pages/master-dashboard/plan/addPackage/AddPackage";
 import UserAttendance from "../pages/master-dashboard/manage-user/user-attendance/UserAttendance";
 import BatchClass from "../pages/master-dashboard/batchClass/BatchClass";
 import ViewEvents from "../pages/master-dashboard/events/viewEvents/ViewEvents";
@@ -36,7 +37,8 @@ const Routing = () => {
         <Route path="/business-setting" element={<IndividualSettings />} />
         <Route path="/individual-settings" element={<IndividualSettings />} />
         <Route path="/master-plan" element={<MasterPlan />} />
-        <Route path="/add-plan" element={<AddPlan />} />
+        <Route path="/master/plan/add-plan" element={<AddPlan />} />
+        <Route path="/master/plan/add-package" element={<AddPackage />} />
         <Route path="/batch" element={<BatchClass />} />
         <Route path="/make-payment" element={<MakePayment />} />
         <Route path="/view-staff" element={<MasterAccount />} />

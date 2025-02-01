@@ -12,21 +12,18 @@ function PlanList({ planData, tabHead, tabButtonText }) {
             </div>
         </div>
       <div className="row justify-content-between">
-        {planData.map((data, i) => {
-          return (
-            <div className="plan-card-box">
-              <PlanCard
-                key={i}
-                img={data.img}
-                planAmount={data.planAmount}
-                planDesc={data.planDesc}
-                planDuration={data.planDuration}
-                discountedPrice={data.discountedPrice}
-                planName={data.planName}
-              />
-            </div>
-          );
-        })}
+        {planData.map((data, index) => (
+          <div key={`plan-${index}`} className="plan-card-box">
+            <PlanCard
+              img={data.img}
+              planAmount={data.planAmount}
+              planDesc={data.planDesc}
+              planDuration={data.planDuration}
+              discountedPrice={data.discountedPrice}
+              planName={data.planName}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

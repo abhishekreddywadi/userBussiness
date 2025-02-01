@@ -1,85 +1,165 @@
-import React, { useState, useContext } from "react";
-import UserContext from "../../../../context/UserContext";
-import Header from "../../../../components/header/Header";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
-import "./addPlan.scss";
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import "./addPlan.css";
 
-function AddPlan() {
-  const { navButtonClick } = useContext(UserContext);
-  const [editorContent, setEditorContent] = useState("");
-  const [imagePreview, setImagePreview] = useState("");
+const AddPlan = () => {
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [duration, setDuration] = useState("12 Months");
+  const [discount, setDiscount] = useState("");
+  const [features, setFeatures] = useState([""]);
+  const [selectedPlans, setSelectedPlans] = useState([{ name: "", price: "" }]);
 
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setImagePreview(imageUrl);
-    }
+  const handleFeatureChange = (index, value) => {
+    const newFeatures = [...features];
+    newFeatures[index] = value;
+    setFeatures(newFeatures);
   };
 
-  const handleEditorChange = (content) => {
-    setEditorContent(content);
+  const addFeature = () => {
+    setFeatures([...features, ""]);
   };
+
+  const removeFeature = (index) => {
+    const newFeatures = features.filter((_, i) => i !== index);
+    setFeatures(newFeatures);
+  };
+
+  const handleSelectedPlanChange = (index, field, value) => {
+    const newPlans = [...selectedPlans];
+    newPlans[index] = { ...newPlans[index], [field]: value };
+    setSelectedPlans(newPlans);
+  };
+
+  const addPlan = () => {
+    setSelectedPlans([...selectedPlans, { name: "", price: "" }]);
+  };
+
+  const removePlan = (index) => {
+    const newPlans = selectedPlans.filter((_, i) => i !== index);
+    setSelectedPlans(newPlans);
+  };
+
   return (
-    <div className={`dashboard ${navButtonClick && "dashboard-full"} add-plan`}>
-      <Header />
-      <div className="add-plan-container mt-4 mt-md-5">
-        <h2>Add Plan</h2>
-        <form action="">
-          <div className="input-container d-flex flex-column gap-3">
-            <label htmlFor="">Plan Image</label>
-            <span>
-              <img src={imagePreview} alt="plan-img" />
-            </span>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageUpload}
-            />
+    <div className="dashboard">
+      <div className="add-plan-container">
+        <h2>Create New Plan</h2>
+        <button type="button" className="back-btn" onClick={() => window.history.back()}>
+          Back
+        </button>
+
+        <form onSubmit={(e) => e.preventDefault()}>
+          <div className="form-section">
+            <h3>Basic Information</h3>
+            <div className="input-group">
+              <label>Plan Image</label>
+              <input type="file" accept="image/*" />
+            </div>
+            <div className="input-group">
+              <label>Plan Name</label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="e.g., Elite Package"
+              />
+            </div>
+            <div className="input-group">
+              <label>Duration</label>
+              <select value={duration} onChange={(e) => setDuration(e.target.value)}>
+                <option value="1 Month">1 Month</option>
+                <option value="3 Months">3 Months</option>
+                <option value="6 Months">6 Months</option>
+                <option value="12 Months">12 Months</option>
+              </select>
+            </div>
           </div>
-          <div className="input-container">
-            <label htmlFor="">Name</label>
-            <input type="text" />
+
+          <div className="form-section">
+            <h3>Pricing</h3>
+            <div className="input-group">
+              <label>Price (₹)</label>
+              <input
+                type="number"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                placeholder="e.g., 9999"
+              />
+            </div>
+            <div className="input-group">
+              <label>Discount (%)</label>
+              <input
+                type="number"
+                value={discount}
+                onChange={(e) => setDiscount(e.target.value)}
+                placeholder="e.g., 20"
+              />
+            </div>
           </div>
-          <div className="input-container">
-            <label htmlFor="">Duration Type</label>
-            <select name="" id=""></select>
+
+          <div className="form-section">
+            <h3>Features</h3>
+            <div className="features-list">
+              {features.map((feature, index) => (
+                <div key={index} className="feature-item">
+                  <input
+                    type="text"
+                    value={feature}
+                    onChange={(e) => handleFeatureChange(index, e.target.value)}
+                    placeholder="e.g., 24/7 gym access"
+                  />
+                  <button type="button" className="remove-btn" onClick={() => removeFeature(index)}>
+                    <FontAwesomeIcon icon={faTrash} />
+                  </button>
+                </div>
+              ))}
+            </div>
+            <button type="button" className="add-btn" onClick={addFeature}>
+              + Add Feature
+            </button>
           </div>
-          <div className="input-container">
-            <label htmlFor="">Plan Type</label>
-            <select name="" id="">
-              <option value="">Beginner</option>
-            </select>
+
+          <div className="form-section">
+            <h3>Included Plans</h3>
+            <div className="selected-plans-list">
+              {selectedPlans.map((plan, index) => (
+                <div key={index} className="selected-plan-item">
+                  <input
+                    type="text"
+                    value={plan.name}
+                    onChange={(e) => handleSelectedPlanChange(index, "name", e.target.value)}
+                    placeholder="Plan name"
+                  />
+                  <input
+                    type="number"
+                    value={plan.price}
+                    onChange={(e) => handleSelectedPlanChange(index, "price", e.target.value)}
+                    placeholder="Price"
+                  />
+                  <button type="button" className="remove-btn" onClick={() => removePlan(index)}>
+                    <FontAwesomeIcon icon={faTrash} />
+                  </button>
+                </div>
+              ))}
+            </div>
+            <button type="button" className="add-btn" onClick={addPlan}>
+              + Add Plan
+            </button>
           </div>
-          <div className="input-container">
-            <label htmlFor="">Compare at Price</label>
-            <input type="number" />
-          </div>
-          <div className="input-container">
-            <label htmlFor="">Price</label>
-            <input type="number" />
-          </div>
-          <div className="input-container">
-            <label htmlFor="">Discount</label>
-            <input type="number" />
-          </div>
-          <div className="input-container">
-            <ReactQuill
-              value={editorContent}
-              onChange={handleEditorChange}
-              placeholder="Write something amazing..."
-              theme="snow" // or 'bubble'
-            />
+
+          <div className="form-actions">
+            <button type="submit" className="submit-btn">
+              Create Plan
+            </button>
+            <button type="button" className="cancel-btn" onClick={() => window.history.back()}>
+              Cancel
+            </button>
           </div>
         </form>
-        <div className="buttons d-flex align-items-center gap-3 mt-4">
-            <button type="button">Save</button>
-            <button type="button">Cancel</button>
-        </div>
       </div>
     </div>
   );
-}
+};
 
 export default AddPlan;
